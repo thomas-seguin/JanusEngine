@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="Sandbox/Sandbox.vcxproj" Id="c96e64ef-a588-4cbd-9aa3-8f78fdef814c" />
+  <Project Path="JanusEngine/JanusEngine.vcxproj" Id="721912bd-be24-45cc-8fe6-9aa06b2d15ce" />
+</Solution>

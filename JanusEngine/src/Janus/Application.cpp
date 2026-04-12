@@ -1,5 +1,9 @@
 #include "Application.h"
 
+#include "Janus/Log.h"
+#include "Janus/Events/ApplicationEvent.h"
+
+
 namespace Janus {
 	Application::Application() {
 
@@ -8,6 +12,9 @@ namespace Janus {
 	}
 
 	void Application::Run() {
+		WindowResizeEvent e(1280, 720);
+		JN_TRACE(e.ToString());
+
 		while (true);
 	}
 }

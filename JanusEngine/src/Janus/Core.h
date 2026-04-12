@@ -9,3 +9,5 @@
 #else
 	#error Janus only supports Windows!
 #endif // JN_PLATFORM_WINDOWS
+
+#define BIT(x) (1 << x)

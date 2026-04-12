@@ -4,6 +4,9 @@
     <Filter Include="Janus">
       <UniqueIdentifier>{A629710D-123E-99BE-DBBF-3C1E479395EF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Janus\Events">
+      <UniqueIdentifier>{CABE8EED-B621-1E92-5FA7-56484BE9E914}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Janus.h" />
@@ -15,6 +18,9 @@
     </ClInclude>
     <ClInclude Include="src\Janus\Entrypoint.h">
       <Filter>Janus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Events\Event.h">
+      <Filter>Janus\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Janus\Log.h">
       <Filter>Janus</Filter>

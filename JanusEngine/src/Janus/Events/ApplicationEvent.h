@@ -2,7 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
 
 namespace Janus {
 	class JANUS_API WindowResizeEvent : public Event {

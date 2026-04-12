@@ -19,12 +19,22 @@
     <ClInclude Include="src\Janus\Entrypoint.h">
       <Filter>Janus</Filter>
     </ClInclude>
+    <ClInclude Include="src\Janus\Events\ApplicationEvent.h">
+      <Filter>Janus\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Janus\Events\Event.h">
+      <Filter>Janus\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Events\KeyEvent.h">
+      <Filter>Janus\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Events\MouseEvent.h">
       <Filter>Janus\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Janus\Log.h">
       <Filter>Janus</Filter>
     </ClInclude>
+    <ClInclude Include="src\jnpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Application.cpp">
@@ -33,5 +43,6 @@
     <ClCompile Include="src\Janus\Log.cpp">
       <Filter>Janus</Filter>
     </ClCompile>
+    <ClCompile Include="src\jnpch.cpp" />
   </ItemGroup>
 </Project>

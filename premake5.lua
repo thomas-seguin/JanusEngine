@@ -18,6 +18,9 @@ project "JanusEngine"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "jnpch.h"
+	pchsource "JanusEngine/src/jnpch.cpp"
+
 	files 
 	{
 		"%{prj.name}/src/**.h",

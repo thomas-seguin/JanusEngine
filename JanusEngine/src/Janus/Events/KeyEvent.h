@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Janus {
 	class JANUS_API KeyEvent : public Event {
 	public:

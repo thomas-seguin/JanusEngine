@@ -1,9 +1,7 @@
 #pragma once
 
+#include "jnpch.h"
 #include "Janus/Core.h"
-
-#include <string>
-#include <functional>
 
 namespace Janus {
 	enum class EventType

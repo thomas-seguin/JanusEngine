@@ -1,3 +1,6 @@
 [submodule "JanusEngine/vendor/spdlog"]
 	path = JanusEngine/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "JanusEngine/vendor/GLFW"]
+	path = JanusEngine/vendor/GLFW
+	url = https://github.com/thomas-seguin/glfw

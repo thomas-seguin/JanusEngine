@@ -1,0 +1,3 @@
+[submodule "JanusEngine/vendor/spdlog"]
+	path = JanusEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog

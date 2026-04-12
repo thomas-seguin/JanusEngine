@@ -4,5 +4,7 @@
 
 #include "Janus/Application.h"
 
+#include "Janus/Log.h"
+
 // ------ Entry Point -----------------
 #include "Janus/Entrypoint.h"

@@ -10,6 +10,11 @@ workspace "JanusEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "JanusEngine/vendor/GLFW/include"
+
+include "JanusEngine/vendor/GLFW"
+
 project "JanusEngine"
 	location "JanusEngine"
 	kind "SharedLib"
@@ -30,7 +35,13 @@ project "JanusEngine"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links {
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

@@ -7,6 +7,12 @@
     <Filter Include="Janus\Events">
       <UniqueIdentifier>{CABE8EED-B621-1E92-5FA7-56484BE9E914}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Janus.h" />
@@ -34,6 +40,12 @@
     <ClInclude Include="src\Janus\Log.h">
       <Filter>Janus</Filter>
     </ClInclude>
+    <ClInclude Include="src\Janus\Window.h">
+      <Filter>Janus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\jnpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="src\Janus\Log.cpp">
       <Filter>Janus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\jnpch.cpp" />
   </ItemGroup>

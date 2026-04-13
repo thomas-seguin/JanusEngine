@@ -12,8 +12,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "JanusEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "JanusEngine/vendor/Glad/include"
+
 
 include "JanusEngine/vendor/GLFW"
+include "JanusEngine/vendor/Glad"
 
 project "JanusEngine"
 	location "JanusEngine"
@@ -36,11 +39,14 @@ project "JanusEngine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
+
 	}
 
 	links {
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -53,7 +59,8 @@ project "JanusEngine"
 		defines 
 		{
 			"JN_PLATFORM_WINDOWS",
-			"JN_BUILD_DLL"
+			"JN_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands 
@@ -63,14 +70,17 @@ project "JanusEngine"
 
 	filter "configurations:Debug"
 		defines "JN_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "JN_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "JN_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -111,12 +121,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "JN_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "JN_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "JN_DIST"
+		buildoptions "/MD"
 		optimize "On"

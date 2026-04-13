@@ -37,6 +37,12 @@
     <ClInclude Include="src\Janus\Events\MouseEvent.h">
       <Filter>Janus\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Janus\Layer.h">
+      <Filter>Janus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\LayerStack.h">
+      <Filter>Janus</Filter>
+    </ClInclude>
     <ClInclude Include="src\Janus\Log.h">
       <Filter>Janus</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Application.cpp">
+      <Filter>Janus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Layer.cpp">
+      <Filter>Janus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\LayerStack.cpp">
       <Filter>Janus</Filter>
     </ClCompile>
     <ClCompile Include="src\Janus\Log.cpp">

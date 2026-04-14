@@ -67,6 +67,8 @@
     <ClInclude Include="src\jnpch.h" />
     <ClInclude Include="src\Janus\Input.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Janus\KeyCodes.h" />
+    <ClInclude Include="src\Janus\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Application.cpp">

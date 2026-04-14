@@ -6,11 +6,13 @@ public:
 	}
 
 	void OnUpdate() override {
-		JN_INFO("ExampleLayer::Update");
 	}
 
 	void OnEvent(Janus::Event& event) override {
-		JN_INFO("{0}", event.ToString());
+		if (event.GetEventType() == Janus::EventType::KeyPressed) {
+			Janus::KeyPressedEvent& e = (Janus::KeyPressedEvent&)event;
+			JN_TRACE("{0}",(char)e.GetKeyCode());
+		}
 	}
 };
 

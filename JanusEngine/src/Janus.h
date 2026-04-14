@@ -7,5 +7,9 @@
 #include "Janus/Log.h"
 #include "Janus/ImGui/ImGuiLayer.h"
 
+#include "Janus/Input.h"
+#include "Janus/KeyCodes.h"
+#include "Janus/MouseButtonCodes.h"
+
 // ------ Entry Point -----------------
 #include "Janus/Entrypoint.h"

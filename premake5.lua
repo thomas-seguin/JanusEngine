@@ -14,6 +14,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "JanusEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "JanusEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "JanusEngine/vendor/imgui"
+IncludeDir["glm"] = "JanusEngine/vendor/glm"
 
 
 include "JanusEngine/vendor/GLFW"
@@ -43,7 +44,8 @@ project "JanusEngine"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 
 	}
 
@@ -104,7 +106,8 @@ project "Sandbox"
 	includedirs
 	{
 		"JanusEngine/vendor/spdlog/include",
-		"JanusEngine/src"
+		"JanusEngine/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links 

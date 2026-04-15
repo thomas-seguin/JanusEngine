@@ -20,7 +20,6 @@ class Sandbox : public Janus::Application {
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Janus::ImGuiLayer());
 	}
 
 	~Sandbox() {

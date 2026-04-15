@@ -177,18 +177,17 @@
     <ClInclude Include="src\Janus\Log.h" />
     <ClInclude Include="src\Janus\MouseButtonCodes.h" />
     <ClInclude Include="src\Janus\Window.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\jnpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Application.cpp" />
+    <ClCompile Include="src\Janus\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Janus\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Janus\Layer.cpp" />
     <ClCompile Include="src\Janus\LayerStack.cpp" />
     <ClCompile Include="src\Janus\Log.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\jnpch.cpp">

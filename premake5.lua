@@ -23,8 +23,10 @@ include "JanusEngine/vendor/imgui"
 
 project "JanusEngine"
 	location "JanusEngine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -57,8 +59,6 @@ project "JanusEngine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 		buildoptions {"/utf-8"}
 
@@ -69,30 +69,27 @@ project "JanusEngine"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands 
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		}
-
 	filter "configurations:Debug"
 		defines "JN_DEBUG"
 		buildoptions "/MDd"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "JN_RELEASE"
 		buildoptions "/MD"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "JN_DIST"
 		buildoptions "/MD"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -116,8 +113,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 		buildoptions {"/utf-8"}
 
@@ -129,14 +124,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "JN_DEBUG"
 		buildoptions "/MDd"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "JN_RELEASE"
 		buildoptions "/MD"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "JN_DIST"
 		buildoptions "/MD"
-		optimize "On"
+		optimize "on"

@@ -8,16 +8,8 @@
 #include "Janus/Events/ApplicationEvent.h"
 
 #include "Janus/ImGui/ImGuiLayer.h"
-
-#include "Janus/Renderer/Shader.h"
-#include "Janus/Renderer/Buffer.h"
-#include "Janus/Renderer/VertexArray.h"
-
-#include "Janus/Renderer/OrthographicCamera.h"
-
-
 namespace Janus {
-	class JANUS_API Application {
+	class Application {
 	public:
 		Application();
 		virtual ~Application();

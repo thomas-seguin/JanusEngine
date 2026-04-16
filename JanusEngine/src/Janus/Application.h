@@ -13,6 +13,8 @@
 #include "Janus/Renderer/Buffer.h"
 #include "Janus/Renderer/VertexArray.h"
 
+#include "Janus/Renderer/OrthographicCamera.h"
+
 
 namespace Janus {
 	class JANUS_API Application {
@@ -43,8 +45,7 @@ namespace Janus {
 		std::shared_ptr<Shader> m_Shader2;
 		std::shared_ptr<VertexArray> m_SquareVA;
 
-
-
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};

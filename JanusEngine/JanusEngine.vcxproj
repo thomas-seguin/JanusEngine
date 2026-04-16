@@ -152,6 +152,9 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Janus\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Janus\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Janus\Renderer\Buffer.h" />
     <ClInclude Include="src\Janus\Renderer\Renderer.h" />
@@ -181,6 +184,9 @@
     <ClInclude Include="src\jnpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Janus\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Janus\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Janus\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Janus\Renderer\Renderer.cpp" />

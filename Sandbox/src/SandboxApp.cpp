@@ -2,7 +2,7 @@
 
 class ExampleLayer : public Janus::Layer {
 public:
-	ExampleLayer() : Layer("Example"), m_Camera(-1.0f, 1.0f, -1.0f, 1.0f) {
+	ExampleLayer() : Layer("Example"), m_Camera(-1.0f, 1.0f, -1.0f, 1.0f), m_CameraPosition(0.0f,0.0f,0.0f) {
 		m_VertexArray.reset(Janus::VertexArray::Create());
 
 		float vertices[3 * 7] = {
@@ -115,8 +115,29 @@ public:
 	}
 
 	void OnUpdate() override {
+		if (Janus::Input::IsKeyPressed(JN_KEY_LEFT))
+			m_CameraPosition.x -= m_CameraMoveSpeed;
+
+		else if (Janus::Input::IsKeyPressed(JN_KEY_RIGHT))
+			m_CameraPosition.x += m_CameraMoveSpeed;
+
+		if (Janus::Input::IsKeyPressed(JN_KEY_DOWN))
+			m_CameraPosition.y -= m_CameraMoveSpeed;
+
+		else if (Janus::Input::IsKeyPressed(JN_KEY_UP))
+			m_CameraPosition.y += m_CameraMoveSpeed;
+
+		if (Janus::Input::IsKeyPressed(JN_KEY_A))
+			m_CameraRotation += m_CameraRotationSpeed;
+		if (Janus::Input::IsKeyPressed(JN_KEY_D))
+			m_CameraRotation -= m_CameraRotationSpeed;
+
+
 		Janus::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Janus::RenderCommand::Clear();
+
+		m_Camera.SetPosition(m_CameraPosition);
+		m_Camera.SetRotation(m_CameraRotation);
 
 		Janus::Renderer::BeginScene(m_Camera);
 
@@ -131,7 +152,6 @@ public:
 	}
 
 	void OnEvent(Janus::Event& event) override {
-
 	}
 
 private:
@@ -142,6 +162,10 @@ private:
 	std::shared_ptr<Janus::VertexArray> m_SquareVA;
 
 	Janus::OrthographicCamera m_Camera;
+	glm::vec3 m_CameraPosition;
+	float m_CameraMoveSpeed = 0.1f;
+	float m_CameraRotation = 0.0f;
+	float m_CameraRotationSpeed = 0.1f;
 };
 
 class Sandbox : public Janus::Application {

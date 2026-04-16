@@ -9,6 +9,8 @@
 
 #include "Janus/ImGui/ImGuiLayer.h"
 
+#include "Janus/Renderer/Shader.h"
+
 
 namespace Janus {
 	class JANUS_API Application {
@@ -34,6 +36,7 @@ namespace Janus {
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};

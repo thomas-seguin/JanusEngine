@@ -74,6 +74,9 @@
     <ClInclude Include="src\Janus\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Janus\Renderer\Shader.h" />
+    <ClInclude Include="src\Janus\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Janus\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Application.cpp">
@@ -103,5 +106,8 @@
     <ClCompile Include="src\jnpch.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Janus\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Janus\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Janus\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>

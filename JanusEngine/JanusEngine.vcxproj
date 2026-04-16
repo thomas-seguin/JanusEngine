@@ -152,7 +152,10 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Janus\Renderer\Buffer.h" />
+    <ClInclude Include="src\Janus\Renderer\Renderer.h" />
     <ClInclude Include="src\Janus\Renderer\Shader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Janus.h" />
     <ClInclude Include="src\Janus\Application.h" />
@@ -176,7 +179,10 @@
     <ClInclude Include="src\jnpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Janus\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Janus\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Janus\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Janus\Application.cpp" />
     <ClCompile Include="src\Janus\ImGui\ImGuiBuild.cpp" />

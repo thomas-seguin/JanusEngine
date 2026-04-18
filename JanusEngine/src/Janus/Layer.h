@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Janus/Core.h"
+#include "Janus/Core/Timestep.h"
 #include "Janus/Events/Event.h"
 
 namespace Janus {
@@ -11,7 +12,7 @@ namespace Janus {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

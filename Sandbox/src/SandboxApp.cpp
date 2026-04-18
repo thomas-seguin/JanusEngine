@@ -114,23 +114,24 @@ public:
 		m_Shader2.reset(new Janus::Shader(vertexSrc2, fragmentSrc2));
 	}
 
-	void OnUpdate() override {
+	void OnUpdate(Janus::Timestep ts) override {
+
 		if (Janus::Input::IsKeyPressed(JN_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed;
+			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
 
 		else if (Janus::Input::IsKeyPressed(JN_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed;
+			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 
 		if (Janus::Input::IsKeyPressed(JN_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed;
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 
 		else if (Janus::Input::IsKeyPressed(JN_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed;
+			m_CameraPosition.y += m_CameraMoveSpeed * ts;
 
 		if (Janus::Input::IsKeyPressed(JN_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed;
+			m_CameraRotation += m_CameraRotationSpeed * ts;
 		if (Janus::Input::IsKeyPressed(JN_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed;
+			m_CameraRotation -= m_CameraRotationSpeed * ts;
 
 
 		Janus::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
@@ -163,9 +164,9 @@ private:
 
 	Janus::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 0.1f;
+	float m_CameraMoveSpeed = 5.0f;
 	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 0.1f;
+	float m_CameraRotationSpeed = 180.0f;
 };
 
 class Sandbox : public Janus::Application {

@@ -6,6 +6,8 @@
 #include "Janus/Layer.h"
 #include "Janus/Log.h"
 
+#include "Janus/Core/Timestep.h"
+
 #include "Janus/Input.h"
 #include "Janus/KeyCodes.h"
 #include "Janus/MouseButtonCodes.h"

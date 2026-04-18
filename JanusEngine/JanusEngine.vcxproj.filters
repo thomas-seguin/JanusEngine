@@ -4,14 +4,23 @@
     <Filter Include="Janus">
       <UniqueIdentifier>{A629710D-123E-99BE-DBBF-3C1E479395EF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Janus\Core">
+      <UniqueIdentifier>{BE454446-AAFD-8593-1305-5FEFFFDB2084}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Janus\Events">
       <UniqueIdentifier>{CABE8EED-B621-1E92-5FA7-56484BE9E914}</UniqueIdentifier>
     </Filter>
     <Filter Include="Janus\ImGui">
       <UniqueIdentifier>{50C3370F-BC78-B004-456D-AADBB121A708}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Janus\Renderer">
+      <UniqueIdentifier>{0CA83483-F875-2889-E109-99AFCD7604EE}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
@@ -24,6 +33,9 @@
     </ClInclude>
     <ClInclude Include="src\Janus\Core.h">
       <Filter>Janus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Core\Timestep.h">
+      <Filter>Janus\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Janus\Entrypoint.h">
       <Filter>Janus</Filter>
@@ -61,8 +73,47 @@
     <ClInclude Include="src\Janus\MouseButtonCodes.h">
       <Filter>Janus</Filter>
     </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\Buffer.h">
+      <Filter>Janus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\GraphicsContext.h">
+      <Filter>Janus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\OrthographicCamera.h">
+      <Filter>Janus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\RenderCommand.h">
+      <Filter>Janus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\Renderer.h">
+      <Filter>Janus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\RendererAPI.h">
+      <Filter>Janus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\Shader.h">
+      <Filter>Janus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\VertexArray.h">
+      <Filter>Janus\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Janus\Window.h">
       <Filter>Janus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>Platform\Windows</Filter>
@@ -71,19 +122,6 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\jnpch.h" />
-    <ClInclude Include="src\Janus\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Janus\Renderer\Shader.h" />
-    <ClInclude Include="src\Janus\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Janus\Renderer\Renderer.h" />
-    <ClInclude Include="src\Janus\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Janus\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\Janus\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\Janus\Renderer\OrthographicCamera.h" />
-    <ClInclude Include="src\Janus\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Application.cpp">
@@ -104,6 +142,42 @@
     <ClCompile Include="src\Janus\Log.cpp">
       <Filter>Janus</Filter>
     </ClCompile>
+    <ClCompile Include="src\Janus\Renderer\Buffer.cpp">
+      <Filter>Janus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Renderer\OrthographicCamera.cpp">
+      <Filter>Janus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Renderer\RenderCommand.cpp">
+      <Filter>Janus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Renderer\Renderer.cpp">
+      <Filter>Janus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Renderer\RendererAPI.cpp">
+      <Filter>Janus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Renderer\Shader.cpp">
+      <Filter>Janus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Renderer\VertexArray.cpp">
+      <Filter>Janus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
@@ -111,16 +185,5 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\jnpch.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Janus\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Janus\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Janus\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Janus\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Janus\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\Janus\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\Janus\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

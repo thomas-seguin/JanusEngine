@@ -1,10 +1,17 @@
 #include "Janus.h"
 
+
+#include "Platform/OpenGL/OpenGLShader.h"
+
+#include "imgui.h"
+
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 
 class ExampleLayer : public Janus::Layer {
 public:
-	ExampleLayer() : Layer("Example"), m_Camera(-1.0f, 1.0f, -1.0f, 1.0f), m_CameraPosition(0.0f,0.0f,0.0f), m_SquarePosition(0.0f) {
+	ExampleLayer() : Layer("Example"), m_Camera(-1.0f, 1.0f, -1.0f, 1.0f), m_CameraPosition(0.0f,0.0f,0.0f) {
 		m_VertexArray.reset(Janus::VertexArray::Create());
 
 		float vertices[3 * 7] = {
@@ -83,9 +90,9 @@ public:
 			}
 		)";
 
-		m_Shader.reset(new Janus::Shader(vertexSrc, fragmentSrc));
+		m_Shader.reset(Janus::Shader::Create(vertexSrc, fragmentSrc));
 
-		std::string vertexSrc2 = R"(
+		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
@@ -102,20 +109,23 @@ public:
 			}
 		)";
 
-		std::string fragmentSrc2 = R"(
+		std::string flatColorShaderFragmentSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
 
+			uniform vec3 u_Color;
+
 			void main() 
 			{
-				color = vec4(v_Position * 0.5 + 0.5, 1.0);
+				color = vec4(u_Color,1.0);
 			}
 		)";
 
-		m_Shader2.reset(new Janus::Shader(vertexSrc2, fragmentSrc2));
+		m_FlatColorShader.reset(Janus::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+
 	}
 
 	void OnUpdate(Janus::Timestep ts) override {
@@ -137,18 +147,6 @@ public:
 		if (Janus::Input::IsKeyPressed(JN_KEY_D))
 			m_CameraRotation -= m_CameraRotationSpeed * ts;
 
-		if (Janus::Input::IsKeyPressed(JN_KEY_J))
-			m_SquarePosition.x -= m_SquareMoveSpeed * ts;
-
-		else if (Janus::Input::IsKeyPressed(JN_KEY_L))
-			m_SquarePosition.x += m_SquareMoveSpeed * ts;
-
-		if (Janus::Input::IsKeyPressed(JN_KEY_K))
-			m_SquarePosition.y -= m_SquareMoveSpeed * ts;
-
-		else if (Janus::Input::IsKeyPressed(JN_KEY_I))
-			m_SquarePosition.y += m_SquareMoveSpeed * ts;
-
 
 		Janus::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Janus::RenderCommand::Clear();
@@ -158,12 +156,17 @@ public:
 
 		Janus::Renderer::BeginScene(m_Camera);
 
-		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+
+		std::dynamic_pointer_cast<Janus::OpenGLShader>(m_FlatColorShader)->Bind();
+		std::dynamic_pointer_cast<Janus::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+
+
 		for (int y = 0; y < 20; y++) {
 			for (int x = 0; x < 20; x++) {
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				Janus::Renderer::Submit(m_Shader2, m_SquareVA, transform);
+				Janus::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
 
@@ -173,7 +176,9 @@ public:
 	}
 
 	virtual void OnImGuiRender() override {
-
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+		ImGui::End();
 	}
 
 	void OnEvent(Janus::Event& event) override {
@@ -183,7 +188,7 @@ private:
 	std::shared_ptr<Janus::Shader> m_Shader;
 	std::shared_ptr<Janus::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Janus::Shader> m_Shader2;
+	std::shared_ptr<Janus::Shader> m_FlatColorShader;
 	std::shared_ptr<Janus::VertexArray> m_SquareVA;
 
 	Janus::OrthographicCamera m_Camera;
@@ -193,9 +198,7 @@ private:
 	float m_CameraRotation = 0.0f;
 	float m_CameraRotationSpeed = 180.0f;
 
-	glm::vec3 m_SquarePosition;
-	float m_SquareMoveSpeed = 1.0f;
-
+	glm::vec3 m_SquareColor = { 0.2,0.3,0.8 };
 };
 
 class Sandbox : public Janus::Application {

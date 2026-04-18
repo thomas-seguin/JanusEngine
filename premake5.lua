@@ -104,7 +104,8 @@ project "Sandbox"
 	{
 		"JanusEngine/vendor/spdlog/include",
 		"JanusEngine/src",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links 

@@ -15,6 +15,8 @@ IncludeDir["GLFW"] = "JanusEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "JanusEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "JanusEngine/vendor/imgui"
 IncludeDir["glm"] = "JanusEngine/vendor/glm"
+IncludeDir["stb_image"] = "JanusEngine/vendor/stb_image"
+
 
 
 include "JanusEngine/vendor/GLFW"
@@ -38,6 +40,10 @@ project "JanusEngine"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
 	includedirs
@@ -47,7 +53,8 @@ project "JanusEngine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}",
 
 	}
 

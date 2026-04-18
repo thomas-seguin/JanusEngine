@@ -21,6 +21,7 @@
 
 #include "Janus/Renderer/Buffer.h"
 #include "Janus/Renderer/Shader.h"
+#include "Janus/Renderer/Texture.h"
 #include "Janus/Renderer/VertexArray.h"
 
 #include "Janus/Renderer/OrthographicCamera.h"

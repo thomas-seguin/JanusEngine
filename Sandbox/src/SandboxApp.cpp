@@ -1,8 +1,10 @@
 #include "Janus.h"
 
+#include <glm/gtc/matrix_transform.hpp>
+
 class ExampleLayer : public Janus::Layer {
 public:
-	ExampleLayer() : Layer("Example"), m_Camera(-1.0f, 1.0f, -1.0f, 1.0f), m_CameraPosition(0.0f,0.0f,0.0f) {
+	ExampleLayer() : Layer("Example"), m_Camera(-1.0f, 1.0f, -1.0f, 1.0f), m_CameraPosition(0.0f,0.0f,0.0f), m_SquarePosition(0.0f) {
 		m_VertexArray.reset(Janus::VertexArray::Create());
 
 		float vertices[3 * 7] = {
@@ -53,6 +55,7 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 			out vec4 v_Color;
@@ -61,7 +64,7 @@ public:
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 		)";
 
@@ -88,13 +91,14 @@ public:
 			layout(location = 0) in vec3 a_Position;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 
 			void main() 
 			{
 				v_Position = a_Position;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 		)";
 
@@ -133,6 +137,18 @@ public:
 		if (Janus::Input::IsKeyPressed(JN_KEY_D))
 			m_CameraRotation -= m_CameraRotationSpeed * ts;
 
+		if (Janus::Input::IsKeyPressed(JN_KEY_J))
+			m_SquarePosition.x -= m_SquareMoveSpeed * ts;
+
+		else if (Janus::Input::IsKeyPressed(JN_KEY_L))
+			m_SquarePosition.x += m_SquareMoveSpeed * ts;
+
+		if (Janus::Input::IsKeyPressed(JN_KEY_K))
+			m_SquarePosition.y -= m_SquareMoveSpeed * ts;
+
+		else if (Janus::Input::IsKeyPressed(JN_KEY_I))
+			m_SquarePosition.y += m_SquareMoveSpeed * ts;
+
 
 		Janus::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Janus::RenderCommand::Clear();
@@ -142,8 +158,16 @@ public:
 
 		Janus::Renderer::BeginScene(m_Camera);
 
-		Janus::Renderer::Submit(m_Shader2, m_SquareVA);
-		Janus::Renderer::Submit(m_Shader, m_VertexArray);
+		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+		for (int y = 0; y < 20; y++) {
+			for (int x = 0; x < 20; x++) {
+				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0);
+				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+				Janus::Renderer::Submit(m_Shader2, m_SquareVA, transform);
+			}
+		}
+
+		//Janus::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Janus::Renderer::EndScene();
 	}
@@ -165,8 +189,13 @@ private:
 	Janus::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
 	float m_CameraMoveSpeed = 5.0f;
+
 	float m_CameraRotation = 0.0f;
 	float m_CameraRotationSpeed = 180.0f;
+
+	glm::vec3 m_SquarePosition;
+	float m_SquareMoveSpeed = 1.0f;
+
 };
 
 class Sandbox : public Janus::Application {

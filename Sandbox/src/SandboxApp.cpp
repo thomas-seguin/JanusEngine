@@ -20,7 +20,7 @@ public:
 			0.0f, 0.5f, 0.0f, 1.0f, 0.0, 1.0f, 1.0f
 		};
 
-		std::shared_ptr<Janus::VertexBuffer> vertexBuffer;
+		Janus::Ref<Janus::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Janus::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Janus::BufferLayout layout = {
 			{Janus::ShaderDataType::Float3, "a_Position"},
@@ -30,7 +30,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Janus::IndexBuffer> indexBuffer;
+		Janus::Ref<Janus::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Janus::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -43,7 +43,7 @@ public:
 			-0.5f, 0.5f, 0.0f
 
 		};
-		std::shared_ptr<Janus::VertexBuffer> sqaureVB;
+		Janus::Ref<Janus::VertexBuffer> sqaureVB;
 		sqaureVB.reset(Janus::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		sqaureVB->SetLayout({
 			{Janus::ShaderDataType::Float3, "a_Position"}
@@ -51,7 +51,7 @@ public:
 		m_SquareVA->AddVertexBuffer(sqaureVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Janus::IndexBuffer> sqaureIB;
+		Janus::Ref<Janus::IndexBuffer> sqaureIB;
 		sqaureIB.reset(Janus::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(sqaureIB);
 
@@ -185,11 +185,11 @@ public:
 	}
 
 private:
-	std::shared_ptr<Janus::Shader> m_Shader;
-	std::shared_ptr<Janus::VertexArray> m_VertexArray;
+	Janus::Ref<Janus::Shader> m_Shader;
+	Janus::Ref<Janus::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Janus::Shader> m_FlatColorShader;
-	std::shared_ptr<Janus::VertexArray> m_SquareVA;
+	Janus::Ref<Janus::Shader> m_FlatColorShader;
+	Janus::Ref<Janus::VertexArray> m_SquareVA;
 
 	Janus::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

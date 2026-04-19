@@ -91,7 +91,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Janus::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Janus::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -125,15 +125,15 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Janus::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Janus::Shader::Create("FlatColor",flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-		m_TextureShader.reset(Janus::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Janus::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_ChernoLogoTexture = Janus::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-		std::dynamic_pointer_cast<Janus::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Janus::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Janus::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Janus::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Janus::Timestep ts) override {
@@ -178,11 +178,13 @@ public:
 			}
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Janus::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.51f)));
+		Janus::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.51f)));
 
 		m_ChernoLogoTexture->Bind();
-		Janus::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.51f)));
+		Janus::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.51f)));
 
 		//Janus::Renderer::Submit(m_Shader, m_VertexArray);
 
@@ -199,10 +201,11 @@ public:
 	}
 
 private:
+	Janus::ShaderLibrary m_ShaderLibrary;
 	Janus::Ref<Janus::Shader> m_Shader;
 	Janus::Ref<Janus::VertexArray> m_VertexArray;
 
-	Janus::Ref<Janus::Shader> m_FlatColorShader, m_TextureShader;
+	Janus::Ref<Janus::Shader> m_FlatColorShader;
 	Janus::Ref<Janus::VertexArray> m_SquareVA;
 
 	Janus::Ref<Janus::Texture2D> m_Texture, m_ChernoLogoTexture;

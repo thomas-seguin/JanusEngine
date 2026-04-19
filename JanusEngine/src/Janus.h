@@ -11,6 +11,7 @@
 #include "Janus/Input.h"
 #include "Janus/KeyCodes.h"
 #include "Janus/MouseButtonCodes.h"
+#include "Janus/OrthographicCameraController.h"
 
 #include "Janus/ImGui/ImGuiLayer.h"
 
@@ -25,6 +26,8 @@
 #include "Janus/Renderer/VertexArray.h"
 
 #include "Janus/Renderer/OrthographicCamera.h"
+
+
 
 // ------ Entry Point -----------------
 #include "Janus/Entrypoint.h"

@@ -168,6 +168,7 @@
     <ClInclude Include="src\Janus\LayerStack.h" />
     <ClInclude Include="src\Janus\Log.h" />
     <ClInclude Include="src\Janus\MouseButtonCodes.h" />
+    <ClInclude Include="src\Janus\OrthographicCameraController.h" />
     <ClInclude Include="src\Janus\Renderer\Buffer.h" />
     <ClInclude Include="src\Janus\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Janus\Renderer\OrthographicCamera.h" />
@@ -615,6 +616,7 @@
     <ClCompile Include="src\Janus\Layer.cpp" />
     <ClCompile Include="src\Janus\LayerStack.cpp" />
     <ClCompile Include="src\Janus\Log.cpp" />
+    <ClCompile Include="src\Janus\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Janus\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Janus\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Janus\Renderer\RenderCommand.cpp" />

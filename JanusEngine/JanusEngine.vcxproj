@@ -175,6 +175,7 @@
     <ClInclude Include="src\Janus\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Janus\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Janus\Renderer\Renderer.h" />
+    <ClInclude Include="src\Janus\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Janus\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Janus\Renderer\Shader.h" />
     <ClInclude Include="src\Janus\Renderer\Texture.h" />
@@ -621,6 +622,7 @@
     <ClCompile Include="src\Janus\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Janus\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Janus\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Janus\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Janus\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Janus\Renderer\Shader.cpp" />
     <ClCompile Include="src\Janus\Renderer\Texture.cpp" />

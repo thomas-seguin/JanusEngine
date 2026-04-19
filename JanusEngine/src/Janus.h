@@ -18,6 +18,8 @@
 // --------- RENDERER ---------------
 
 #include "Janus/Renderer/Renderer.h"
+#include "Janus/Renderer/Renderer2D.h"
+
 #include "Janus/Renderer/RenderCommand.h"
 
 #include "Janus/Renderer/Buffer.h"
@@ -26,8 +28,3 @@
 #include "Janus/Renderer/VertexArray.h"
 
 #include "Janus/Renderer/OrthographicCamera.h"
-
-
-
-// ------ Entry Point -----------------
-#include "Janus/Core/Entrypoint.h"

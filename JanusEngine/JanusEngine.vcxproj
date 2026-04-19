@@ -153,32 +153,32 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Janus.h" />
-    <ClInclude Include="src\Janus\Application.h" />
-    <ClInclude Include="src\Janus\Core.h" />
+    <ClInclude Include="src\Janus\Core\Application.h" />
+    <ClInclude Include="src\Janus\Core\Core.h" />
+    <ClInclude Include="src\Janus\Core\Entrypoint.h" />
+    <ClInclude Include="src\Janus\Core\Input.h" />
+    <ClInclude Include="src\Janus\Core\KeyCodes.h" />
+    <ClInclude Include="src\Janus\Core\Layer.h" />
+    <ClInclude Include="src\Janus\Core\LayerStack.h" />
+    <ClInclude Include="src\Janus\Core\Log.h" />
+    <ClInclude Include="src\Janus\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Janus\Core\Timestep.h" />
-    <ClInclude Include="src\Janus\Entrypoint.h" />
+    <ClInclude Include="src\Janus\Core\Window.h" />
     <ClInclude Include="src\Janus\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Janus\Events\Event.h" />
     <ClInclude Include="src\Janus\Events\KeyEvent.h" />
     <ClInclude Include="src\Janus\Events\MouseEvent.h" />
     <ClInclude Include="src\Janus\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Janus\Input.h" />
-    <ClInclude Include="src\Janus\KeyCodes.h" />
-    <ClInclude Include="src\Janus\Layer.h" />
-    <ClInclude Include="src\Janus\LayerStack.h" />
-    <ClInclude Include="src\Janus\Log.h" />
-    <ClInclude Include="src\Janus\MouseButtonCodes.h" />
-    <ClInclude Include="src\Janus\OrthographicCameraController.h" />
     <ClInclude Include="src\Janus\Renderer\Buffer.h" />
     <ClInclude Include="src\Janus\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Janus\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Janus\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Janus\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Janus\Renderer\Renderer.h" />
     <ClInclude Include="src\Janus\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Janus\Renderer\Shader.h" />
     <ClInclude Include="src\Janus\Renderer\Texture.h" />
     <ClInclude Include="src\Janus\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Janus\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -610,15 +610,15 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Janus\Application.cpp" />
+    <ClCompile Include="src\Janus\Core\Application.cpp" />
+    <ClCompile Include="src\Janus\Core\Layer.cpp" />
+    <ClCompile Include="src\Janus\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Janus\Core\Log.cpp" />
     <ClCompile Include="src\Janus\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Janus\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Janus\Layer.cpp" />
-    <ClCompile Include="src\Janus\LayerStack.cpp" />
-    <ClCompile Include="src\Janus\Log.cpp" />
-    <ClCompile Include="src\Janus\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Janus\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Janus\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Janus\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Janus\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Janus\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Janus\Renderer\RendererAPI.cpp" />

@@ -1,7 +1,7 @@
 #include "jnpch.h"
 #include "WindowsInput.h"
 
-#include "Janus/Application.h"
+#include "Janus/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Janus {

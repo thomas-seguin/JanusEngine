@@ -57,17 +57,38 @@
     <ClInclude Include="src\Janus.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Janus\Application.h">
-      <Filter>src\Janus</Filter>
+    <ClInclude Include="src\Janus\Core\Application.h">
+      <Filter>src\Janus\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Janus\Core.h">
-      <Filter>src\Janus</Filter>
+    <ClInclude Include="src\Janus\Core\Core.h">
+      <Filter>src\Janus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Core\Entrypoint.h">
+      <Filter>src\Janus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Core\Input.h">
+      <Filter>src\Janus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Core\KeyCodes.h">
+      <Filter>src\Janus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Core\Layer.h">
+      <Filter>src\Janus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Core\LayerStack.h">
+      <Filter>src\Janus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Core\Log.h">
+      <Filter>src\Janus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Core\MouseButtonCodes.h">
+      <Filter>src\Janus\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Janus\Core\Timestep.h">
       <Filter>src\Janus\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Janus\Entrypoint.h">
-      <Filter>src\Janus</Filter>
+    <ClInclude Include="src\Janus\Core\Window.h">
+      <Filter>src\Janus\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Janus\Events\ApplicationEvent.h">
       <Filter>src\Janus\Events</Filter>
@@ -84,27 +105,6 @@
     <ClInclude Include="src\Janus\ImGui\ImGuiLayer.h">
       <Filter>src\Janus\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Janus\Input.h">
-      <Filter>src\Janus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Janus\KeyCodes.h">
-      <Filter>src\Janus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Janus\Layer.h">
-      <Filter>src\Janus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Janus\LayerStack.h">
-      <Filter>src\Janus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Janus\Log.h">
-      <Filter>src\Janus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Janus\MouseButtonCodes.h">
-      <Filter>src\Janus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Janus\OrthographicCameraController.h">
-      <Filter>src\Janus</Filter>
-    </ClInclude>
     <ClInclude Include="src\Janus\Renderer\Buffer.h">
       <Filter>src\Janus\Renderer</Filter>
     </ClInclude>
@@ -112,6 +112,9 @@
       <Filter>src\Janus\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Janus\Renderer\OrthographicCamera.h">
+      <Filter>src\Janus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\OrthographicCameraController.h">
       <Filter>src\Janus\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Janus\Renderer\RenderCommand.h">
@@ -131,9 +134,6 @@
     </ClInclude>
     <ClInclude Include="src\Janus\Renderer\VertexArray.h">
       <Filter>src\Janus\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Janus\Window.h">
-      <Filter>src\Janus</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1424,8 +1424,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Janus\Application.cpp">
-      <Filter>src\Janus</Filter>
+    <ClCompile Include="src\Janus\Core\Application.cpp">
+      <Filter>src\Janus\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Core\Layer.cpp">
+      <Filter>src\Janus\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Core\LayerStack.cpp">
+      <Filter>src\Janus\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Core\Log.cpp">
+      <Filter>src\Janus\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Janus\ImGui\ImGuiBuild.cpp">
       <Filter>src\Janus\ImGui</Filter>
@@ -1433,22 +1442,13 @@
     <ClCompile Include="src\Janus\ImGui\ImGuiLayer.cpp">
       <Filter>src\Janus\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Janus\Layer.cpp">
-      <Filter>src\Janus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Janus\LayerStack.cpp">
-      <Filter>src\Janus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Janus\Log.cpp">
-      <Filter>src\Janus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Janus\OrthographicCameraController.cpp">
-      <Filter>src\Janus</Filter>
-    </ClCompile>
     <ClCompile Include="src\Janus\Renderer\Buffer.cpp">
       <Filter>src\Janus\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Janus\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Janus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Renderer\OrthographicCameraController.cpp">
       <Filter>src\Janus\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Janus\Renderer\RenderCommand.cpp">

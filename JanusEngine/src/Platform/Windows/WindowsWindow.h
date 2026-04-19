@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Janus/Window.h"
+#include "Janus/Core/Window.h"
 #include "Janus/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

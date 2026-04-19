@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Janus/Core.h"
+#include "Janus/Core/Core.h"
 #include "Janus/Core/Timestep.h"
 #include "Janus/Events/Event.h"
 

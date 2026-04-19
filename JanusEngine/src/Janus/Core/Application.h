@@ -3,7 +3,7 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "Janus/LayerStack.h"
+#include "Janus/Core/LayerStack.h"
 #include "Janus/Events/Event.h"
 #include "Janus/Events/ApplicationEvent.h"
 

@@ -1,8 +1,8 @@
 #include "jnpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Janus/Input.h"
-#include "Janus/KeyCodes.h"
+#include "Janus/Core/Input.h"
+#include "Janus/Core/KeyCodes.h"
 
 namespace Janus {
 	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation)

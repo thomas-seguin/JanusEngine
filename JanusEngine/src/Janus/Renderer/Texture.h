@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Janus/Core.h"
+#include "Janus/Core/Core.h"
 
 namespace Janus {
 	class Texture {

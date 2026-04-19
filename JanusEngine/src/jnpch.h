@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Janus/Log.h"
+#include "Janus/Core/Log.h"
 
 #ifdef JN_PLATFORM_WINDOWS
 	#include <Windows.h>

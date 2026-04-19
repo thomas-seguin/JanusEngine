@@ -2,16 +2,16 @@
 
 // For use by Janus applications
 
-#include "Janus/Application.h"
-#include "Janus/Layer.h"
-#include "Janus/Log.h"
+#include "Janus/Core/Application.h"
+#include "Janus/Core/Layer.h"
+#include "Janus/Core/Log.h"
 
 #include "Janus/Core/Timestep.h"
 
-#include "Janus/Input.h"
-#include "Janus/KeyCodes.h"
-#include "Janus/MouseButtonCodes.h"
-#include "Janus/OrthographicCameraController.h"
+#include "Janus/Core/Input.h"
+#include "Janus/Core/KeyCodes.h"
+#include "Janus/Core/MouseButtonCodes.h"
+#include "Janus/Renderer/OrthographicCameraController.h"
 
 #include "Janus/ImGui/ImGuiLayer.h"
 
@@ -30,4 +30,4 @@
 
 
 // ------ Entry Point -----------------
-#include "Janus/Entrypoint.h"
+#include "Janus/Core/Entrypoint.h"

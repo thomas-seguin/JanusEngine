@@ -2,7 +2,7 @@
 
 #include "jnpch.h"
 
-#include "Janus/Core.h"
+#include "Janus/Core/Core.h"
 #include "Janus/Events/Event.h"
 
 namespace Janus {

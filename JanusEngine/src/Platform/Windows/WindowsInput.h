@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Janus/Input.h"
+#include "Janus/Core/Input.h"
 
 namespace Janus {
 	class WindowsInput : public Input {

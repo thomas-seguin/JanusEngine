@@ -11,27 +11,7 @@ Sandbox2D::Sandbox2D() : Layer("Sandbox2D"), m_CameraController(1280.0f / 720.0f
 
 void Sandbox2D::OnAttach() {
 
-	m_SquareVA = Janus::VertexArray::Create();
-
-	float squareVertices[5 * 4] = {
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		0.5f, 0.5f, 0.0f,
-		-0.5f, 0.5f, 0.0f
-	};
-	Janus::Ref<Janus::VertexBuffer> sqaureVB;
-	sqaureVB.reset(Janus::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-	sqaureVB->SetLayout({
-		{Janus::ShaderDataType::Float3, "a_Position"}
-		});
-	m_SquareVA->AddVertexBuffer(sqaureVB);
-
-	uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-	Janus::Ref<Janus::IndexBuffer> sqaureIB;
-	sqaureIB.reset(Janus::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-	m_SquareVA->SetIndexBuffer(sqaureIB);
-
-	m_FlatColorShader = Janus::Shader::Create("assets/shaders/FlatColor.glsl");
+	m_CheckerboardTexture = Janus::Texture2D::Create("assets/textures/Checkerboard.png");
 }
 
 void Sandbox2D::OnDetach() {
@@ -49,6 +29,7 @@ void Sandbox2D::OnUpdate(Janus::Timestep ts) {
 
 	Janus::Renderer2D::DrawQuad({ -1.0f,0.0f }, { 0.8f, 0.8f }, { 0.8f,0.2f, 0.3f, 1.0f });
 	Janus::Renderer2D::DrawQuad({ 0.5f,-0.5f }, { 0.5f, 0.75f }, { 0.2f,0.3f, 0.8f, 1.0f });
+	Janus::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerboardTexture);
 
 	Janus::Renderer2D::EndScene();
 }

@@ -164,6 +164,7 @@
     <ClInclude Include="src\Janus\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Janus\Core\Timestep.h" />
     <ClInclude Include="src\Janus\Core\Window.h" />
+    <ClInclude Include="src\Janus\Debug\Instrumentor.h" />
     <ClInclude Include="src\Janus\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Janus\Events\Event.h" />
     <ClInclude Include="src\Janus\Events\KeyEvent.h" />

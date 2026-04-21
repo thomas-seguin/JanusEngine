@@ -9,6 +9,7 @@ namespace Janus {
 		: m_WindowHandle(windowHandle) {}
 
 	void OpenGLContext::Init() {
+		JN_PROFILE_FUNCTION();
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		JN_CORE_ASSERT(status, "Failed to initialize Glad!");
@@ -21,6 +22,7 @@ namespace Janus {
 	}
 
 	void OpenGLContext::SwapBuffers() {
+		JN_PROFILE_FUNCTION();
 		glfwSwapBuffers(m_WindowHandle);
 	}
 }

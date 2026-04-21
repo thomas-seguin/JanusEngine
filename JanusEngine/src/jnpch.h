@@ -15,6 +15,9 @@
 
 #include "Janus/Core/Log.h"
 
+#include "Janus/Debug/Instrumentor.h"
+
+
 #ifdef JN_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

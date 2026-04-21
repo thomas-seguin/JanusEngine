@@ -17,6 +17,8 @@ namespace Janus {
 	static Renderer2DStorage* s_Data;
 
 	void Renderer2D::Init() {
+		JN_PROFILE_FUNCTION();
+
 		s_Data = new Renderer2DStorage();
 
 		s_Data->QuadVertexArray = VertexArray::Create();

@@ -14,9 +14,9 @@ namespace Janus {
 
 	Application* Application::s_Instance = nullptr;
 
-
-
 	Application::Application() {
+		JN_PROFILE_FUNCTION();
+
 		JN_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
@@ -65,12 +65,12 @@ namespace Janus {
 			if (!m_Minimized) {
 				for (Layer* layer : m_LayerStack)
 					layer->OnUpdate(timestep);
-			}
 
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
+				m_ImGuiLayer->Begin();
+				for (Layer* layer : m_LayerStack)
+					layer->OnImGuiRender();
+				m_ImGuiLayer->End();
+			}
 
 			m_Window->OnUpdate();
 		}

@@ -1,1 +1,1 @@
-{"otherData": {},"traceEvents":[]}
+{"otherData": {},"traceEvents":[{"cat":"function","dur":15420,"name":"void __cdecl Janus::WindowsWindow::Shutdown(void)","ph":"X","pid":0,"tid":354280956,"ts":2184948508529},{"cat":"function","dur":15542,"name":"__cdecl Janus::WindowsWindow::~WindowsWindow(void)","ph":"X","pid":0,"tid":354280956,"ts":2184948508529}]}

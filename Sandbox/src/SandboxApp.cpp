@@ -23,8 +23,7 @@ public:
 			0.0f, 0.5f, 0.0f, 1.0f, 0.0, 1.0f, 1.0f
 		};
 
-		Janus::Ref<Janus::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Janus::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Janus::Ref<Janus::VertexBuffer> vertexBuffer = Janus::VertexBuffer::Create(vertices, sizeof(vertices));
 		Janus::BufferLayout layout = {
 			{Janus::ShaderDataType::Float3, "a_Position"},
 			{Janus::ShaderDataType::Float4, "a_Color"},
@@ -33,8 +32,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		Janus::Ref<Janus::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Janus::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		Janus::Ref<Janus::IndexBuffer> indexBuffer = Janus::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_SquareVA = Janus::VertexArray::Create();
@@ -46,8 +44,7 @@ public:
 			-0.5f, 0.5f, 0.0f, 0.0f, 1.0f
 
 		};
-		Janus::Ref<Janus::VertexBuffer> sqaureVB;
-		sqaureVB.reset(Janus::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Janus::Ref<Janus::VertexBuffer> sqaureVB = Janus::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		sqaureVB->SetLayout({
 			{Janus::ShaderDataType::Float3, "a_Position"},
 			{Janus::ShaderDataType::Float2, "a_TexCoord"}
@@ -55,8 +52,7 @@ public:
 		m_SquareVA->AddVertexBuffer(sqaureVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Janus::Ref<Janus::IndexBuffer> sqaureIB;
-		sqaureIB.reset(Janus::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Janus::Ref<Janus::IndexBuffer> sqaureIB = Janus::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(sqaureIB);
 
 		std::string vertexSrc = R"(

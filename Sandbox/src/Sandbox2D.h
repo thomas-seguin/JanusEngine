@@ -18,7 +18,6 @@ private:
 
 	Janus::Ref<Janus::VertexArray> m_SquareVA;
 	Janus::Ref<Janus::Shader> m_FlatColorShader;
-	Janus::Ref<Janus::Framebuffer> m_Framebuffer;
 
 	Janus::Ref<Janus::Texture2D> m_CheckerboardTexture;
 

@@ -10,6 +10,9 @@
     <Filter Include="src\Janus\Core">
       <UniqueIdentifier>{75E24A7D-61B0-3E83-4A44-AFA936B11AE8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Janus\Debug">
+      <UniqueIdentifier>{338CB326-9F17-21EB-A828-A4DF14337DEB}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Janus\Events">
       <UniqueIdentifier>{4165AF00-2D5E-CE52-5690-B3D742E8AD5E}</UniqueIdentifier>
     </Filter>
@@ -90,6 +93,9 @@
     <ClInclude Include="src\Janus\Core\Window.h">
       <Filter>src\Janus\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Janus\Debug\Instrumentor.h">
+      <Filter>src\Janus\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\Janus\Events\ApplicationEvent.h">
       <Filter>src\Janus\Events</Filter>
     </ClInclude>
@@ -108,6 +114,9 @@
     <ClInclude Include="src\Janus\Renderer\Buffer.h">
       <Filter>src\Janus\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\Framebuffer.h">
+      <Filter>src\Janus\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Janus\Renderer\GraphicsContext.h">
       <Filter>src\Janus\Renderer</Filter>
     </ClInclude>
@@ -121,6 +130,9 @@
       <Filter>src\Janus\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Janus\Renderer\Renderer.h">
+      <Filter>src\Janus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\Renderer2D.h">
       <Filter>src\Janus\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Janus\Renderer\RendererAPI.h">
@@ -139,6 +151,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
@@ -1422,10 +1437,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Janus\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Janus\Debug\Instrumentor.h" />
-    <ClInclude Include="src\Janus\Renderer\Framebuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Core\Application.cpp">
@@ -1449,6 +1460,9 @@
     <ClCompile Include="src\Janus\Renderer\Buffer.cpp">
       <Filter>src\Janus\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Janus\Renderer\Framebuffer.cpp">
+      <Filter>src\Janus\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Janus\Renderer\OrthographicCamera.cpp">
       <Filter>src\Janus\Renderer</Filter>
     </ClCompile>
@@ -1459,6 +1473,9 @@
       <Filter>src\Janus\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Janus\Renderer\Renderer.cpp">
+      <Filter>src\Janus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Renderer\Renderer2D.cpp">
       <Filter>src\Janus\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Janus\Renderer\RendererAPI.cpp">
@@ -1477,6 +1494,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
@@ -1503,8 +1523,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Janus\Renderer\Renderer2D.cpp" />
-    <ClCompile Include="src\Janus\Renderer\Framebuffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
   </ItemGroup>
 </Project>

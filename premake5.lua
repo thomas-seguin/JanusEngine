@@ -17,11 +17,11 @@ IncludeDir["ImGui"] = "JanusEngine/vendor/imgui"
 IncludeDir["glm"] = "JanusEngine/vendor/glm"
 IncludeDir["stb_image"] = "JanusEngine/vendor/stb_image"
 
-
-
-include "JanusEngine/vendor/GLFW"
-include "JanusEngine/vendor/Glad"
-include "JanusEngine/vendor/imgui"
+group "Dependencies"
+	include "JanusEngine/vendor/GLFW"
+	include "JanusEngine/vendor/Glad"
+	include "JanusEngine/vendor/imgui"
+group ""
 
 project "JanusEngine"
 	location "JanusEngine"
@@ -93,6 +93,59 @@ project "JanusEngine"
 
 project "Sandbox"
 	location "Sandbox"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files 
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp",
+	}
+
+	includedirs
+	{
+		"JanusEngine/vendor/spdlog/include",
+		"JanusEngine/src",
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.ImGui}"
+	}
+
+	links 
+	{
+		"JanusEngine"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+		buildoptions {"/utf-8"}
+
+		defines 
+		{
+			"JN_PLATFORM_WINDOWS"
+		}
+
+	filter "configurations:Debug"
+		defines "JN_DEBUG"
+		buildoptions "/MDd"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "JN_RELEASE"
+		buildoptions "/MD"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "JN_DIST"
+		buildoptions "/MD"
+		optimize "on"
+
+project "Janus-Editor"
+	location "Janus-Editor"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"

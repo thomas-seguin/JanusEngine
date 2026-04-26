@@ -13,7 +13,7 @@
 namespace Janus {
 	class Application {
 	public:
-		Application();
+		Application(const std::string& name = "Janus App");
 		virtual ~Application();
 
 		void Run();

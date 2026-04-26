@@ -48,11 +48,30 @@ namespace Janus {
 	}
 
 	void Scene::OnUpdate(Timestep ts) {
-		auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
-		for (auto entity : group) {
-			auto& [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+		
+		Camera* mainCamera = nullptr;
+		glm::mat4* cameraTransform = nullptr;
+		{
+			auto group = m_Registry.group<TransformComponent, CameraComponent>();
+			for (auto entity : group) {
+				auto& [transform, camera] = group.get<TransformComponent, CameraComponent>(entity);
+				if (camera.Primary) {
+					mainCamera = &camera.Camera;
+					cameraTransform = &transform.Transform;
+					break;
+				}
+			}
+		}
 
-			Renderer2D::DrawQuad(transform, sprite.Color);
+		if (mainCamera) {
+			Renderer2D::BeginScene(mainCamera->GetProjection(), *cameraTransform);
+
+			auto view = m_Registry.view<TransformComponent, SpriteRendererComponent>();
+			view.each([](auto entity, auto& transform, auto& sprite) {
+				Renderer2D::DrawQuad(transform, sprite.Color);
+			});
+
+			Renderer2D::EndScene();
 		}
 	}
 }

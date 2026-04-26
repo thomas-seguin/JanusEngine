@@ -153,6 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Janus.h" />
+    <ClInclude Include="src\Janus\Renderer\Camera.h" />
     <ClInclude Include="src\Janus\Core\Application.h" />
     <ClInclude Include="src\Janus\Core\Core.h" />
     <ClInclude Include="src\Janus\Core\Entrypoint.h" />

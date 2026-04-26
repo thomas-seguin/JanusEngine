@@ -2,6 +2,8 @@
 
 #include <glm/glm.hpp>
 
+#include "Janus/Renderer/Camera.h"
+
 namespace Janus {
 
 	struct TagComponent {
@@ -32,5 +34,15 @@ namespace Janus {
 		SpriteRendererComponent(const SpriteRendererComponent&) = default;
 		SpriteRendererComponent(const glm::vec4 Color)
 			: Color(Color) {}
+	};
+
+	struct CameraComponent {
+		Janus::Camera Camera;
+		bool Primary = true;
+
+		CameraComponent() = default;
+		CameraComponent(const CameraComponent&) = default;
+		CameraComponent(const glm::mat4& projection)
+			: Camera(projection) {}
 	};
 }

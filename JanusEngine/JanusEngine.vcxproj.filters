@@ -1424,6 +1424,8 @@
     </ClInclude>
     <ClInclude Include="src\Janus\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Janus\Debug\Instrumentor.h" />
+    <ClInclude Include="src\Janus\Renderer\Framebuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Core\Application.cpp">
@@ -1502,5 +1504,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="src\Janus\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\Janus\Renderer\Framebuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
   </ItemGroup>
 </Project>

@@ -171,6 +171,7 @@
     <ClInclude Include="src\Janus\Events\MouseEvent.h" />
     <ClInclude Include="src\Janus\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Janus\Renderer\Buffer.h" />
+    <ClInclude Include="src\Janus\Renderer\Framebuffer.h" />
     <ClInclude Include="src\Janus\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Janus\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Janus\Renderer\OrthographicCameraController.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="src\Janus\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
@@ -619,6 +621,7 @@
     <ClCompile Include="src\Janus\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Janus\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Janus\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Janus\Renderer\Framebuffer.cpp" />
     <ClCompile Include="src\Janus\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Janus\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Janus\Renderer\RenderCommand.cpp" />
@@ -630,6 +633,7 @@
     <ClCompile Include="src\Janus\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />

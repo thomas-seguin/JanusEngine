@@ -23,6 +23,7 @@
 #include "Janus/Renderer/RenderCommand.h"
 
 #include "Janus/Renderer/Buffer.h"
+#include "Janus/Renderer/Framebuffer.h"
 #include "Janus/Renderer/Shader.h"
 #include "Janus/Renderer/Texture.h"
 #include "Janus/Renderer/VertexArray.h"

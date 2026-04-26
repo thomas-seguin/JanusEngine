@@ -183,6 +183,9 @@
     <ClInclude Include="src\Janus\Renderer\Shader.h" />
     <ClInclude Include="src\Janus\Renderer\Texture.h" />
     <ClInclude Include="src\Janus\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Janus\Scene\Components.h" />
+    <ClInclude Include="src\Janus\Scene\Entity.h" />
+    <ClInclude Include="src\Janus\Scene\Scene.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
@@ -631,6 +634,8 @@
     <ClCompile Include="src\Janus\Renderer\Shader.cpp" />
     <ClCompile Include="src\Janus\Renderer\Texture.cpp" />
     <ClCompile Include="src\Janus\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Janus\Scene\Entity.cpp" />
+    <ClCompile Include="src\Janus\Scene\Scene.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />

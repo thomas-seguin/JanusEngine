@@ -162,6 +162,7 @@
     <ClInclude Include="src\Janus\Core\LayerStack.h" />
     <ClInclude Include="src\Janus\Core\Log.h" />
     <ClInclude Include="src\Janus\Core\MouseButtonCodes.h" />
+    <ClInclude Include="src\Janus\Core\MouseCodes.h" />
     <ClInclude Include="src\Janus\Core\Timestep.h" />
     <ClInclude Include="src\Janus\Core\Window.h" />
     <ClInclude Include="src\Janus\Debug\Instrumentor.h" />
@@ -189,7 +190,6 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\jnpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />

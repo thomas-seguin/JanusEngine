@@ -5,11 +5,11 @@
     <BuildType Name="Release" />
     <Platform Name="x64" />
   </Configurations>
-  <Project Path="Janus-Editor\Janus-Editor.vcxproj" Id="9AD65652-8639-E6F6-2FBF-1EAD1B01B279">
+  <Project Path="Janus-Editor\Janus-Editor.vcxproj" Id="9AD65652-8639-E6F6-2FBF-1EAD1B01B279" DefaultStartup="true">
   </Project>
   <Project Path="JanusEngine\JanusEngine.vcxproj" Id="3C112445-A8C6-9C3A-31BB-96119D6F933E">
   </Project>
-  <Project Path="Sandbox\Sandbox.vcxproj" Id="F4C124E3-60A1-A37E-69B9-2E55D5170AE0" DefaultStartup="true">
+  <Project Path="Sandbox\Sandbox.vcxproj" Id="F4C124E3-60A1-A37E-69B9-2E55D5170AE0">
   </Project>
   <Folder Name="/Dependencies/">
     <Project Path="JanusEngine\vendor\Glad\Glad.vcxproj" Id="BDD6857C-A90D-870D-52FA-6C103E10030F">

@@ -16,6 +16,7 @@ IncludeDir["Glad"] = "JanusEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "JanusEngine/vendor/imgui"
 IncludeDir["glm"] = "JanusEngine/vendor/glm"
 IncludeDir["stb_image"] = "JanusEngine/vendor/stb_image"
+IncludeDir["entt"] = "JanusEngine/vendor/entt/include"
 
 group "Dependencies"
 	include "JanusEngine/vendor/GLFW"
@@ -55,6 +56,7 @@ project "JanusEngine"
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 
 	}
 
@@ -112,7 +114,8 @@ project "Sandbox"
 		"JanusEngine/vendor/spdlog/include",
 		"JanusEngine/src",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.entt}"
 	}
 
 	links 
@@ -165,7 +168,8 @@ project "Janus-Editor"
 		"JanusEngine/vendor/spdlog/include",
 		"JanusEngine/src",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.entt}"
 	}
 
 	links 

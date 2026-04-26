@@ -1,6 +1,6 @@
 workspace "JanusEngine"
 	architecture "x64"
-	startproject "Sandbox"
+	startproject "Janus-Editor"
 	configurations
 	{
 		"Debug",

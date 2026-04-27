@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-#include "Janus/Renderer/Camera.h"
+#include "SceneCamera.h"
 
 namespace Janus {
 
@@ -37,12 +37,11 @@ namespace Janus {
 	};
 
 	struct CameraComponent {
-		Janus::Camera Camera;
+		Janus::SceneCamera Camera;
 		bool Primary = true;
+		bool FixedAspectRatio = false;
 
 		CameraComponent() = default;
 		CameraComponent(const CameraComponent&) = default;
-		CameraComponent(const glm::mat4& projection)
-			: Camera(projection) {}
 	};
 }

@@ -1442,6 +1442,7 @@
     <ClInclude Include="src\Janus\Scene\Entity.h" />
     <ClInclude Include="src\Janus\Renderer\Camera.h" />
     <ClInclude Include="src\Janus\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Janus\Scene\ScriptableEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Core\Application.cpp">

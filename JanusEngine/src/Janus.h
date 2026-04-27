@@ -17,6 +17,7 @@
 
 #include "Janus/Scene/Scene.h"
 #include "Janus/Scene/Entity.h"
+#include "Janus/Scene/ScriptableEntity.h"
 #include "Janus/Scene/Components.h"
 
 // --------- RENDERER ---------------

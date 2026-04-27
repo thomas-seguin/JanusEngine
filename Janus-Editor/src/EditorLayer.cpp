@@ -35,7 +35,6 @@ namespace Janus {
 		class CameraController : public ScriptableEntity {
 		public:
 			void OnCreate() {
-				std::cout << "On Create: " << std::endl;
 			}
 
 			void OnDestroy() {
@@ -55,8 +54,10 @@ namespace Janus {
 					transform[3][1] -= speed * ts;
 			}
 		};
-
+		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
 		m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
+
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
 
 	void EditorLayer::OnDetach() {}
@@ -137,6 +138,8 @@ namespace Janus {
 			}
 			ImGui::EndMenuBar();
 		}
+
+		m_SceneHierarchyPanel.OnImGuiRender();
 
 		ImGui::Begin("Settings");
 

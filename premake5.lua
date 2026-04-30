@@ -8,6 +8,8 @@ workspace "JanusEngine"
 		"Dist"
 	}
 
+defines { "YAML_CPP_STATIC_DEFINE" }
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
@@ -17,11 +19,13 @@ IncludeDir["ImGui"] = "JanusEngine/vendor/imgui"
 IncludeDir["glm"] = "JanusEngine/vendor/glm"
 IncludeDir["stb_image"] = "JanusEngine/vendor/stb_image"
 IncludeDir["entt"] = "JanusEngine/vendor/entt/include"
+IncludeDir["yaml_cpp"] = "JanusEngine/vendor/yaml-cpp/include"
 
 group "Dependencies"
 	include "JanusEngine/vendor/GLFW"
 	include "JanusEngine/vendor/Glad"
 	include "JanusEngine/vendor/imgui"
+	include "JanusEngine/vendor/yaml-cpp"
 group ""
 
 project "JanusEngine"
@@ -56,7 +60,8 @@ project "JanusEngine"
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.stb_image}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.yaml_cpp}"
 
 	}
 
@@ -64,6 +69,7 @@ project "JanusEngine"
 		"GLFW",
 		"Glad",
 		"ImGui",
+		"yaml-cpp",
 		"opengl32.lib"
 	}
 

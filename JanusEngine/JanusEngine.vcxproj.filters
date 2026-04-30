@@ -22,6 +22,9 @@
     <Filter Include="src\Janus\Renderer">
       <UniqueIdentifier>{43C818E1-2FAC-D936-980C-D489840FC4B8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Janus\Scene">
+      <UniqueIdentifier>{DAEEC127-467A-2FEC-4F8B-B2E0BB958BEC}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -117,6 +120,9 @@
     <ClInclude Include="src\Janus\Renderer\Buffer.h">
       <Filter>src\Janus\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\Camera.h">
+      <Filter>src\Janus\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Janus\Renderer\Framebuffer.h">
       <Filter>src\Janus\Renderer</Filter>
     </ClInclude>
@@ -149,6 +155,21 @@
     </ClInclude>
     <ClInclude Include="src\Janus\Renderer\VertexArray.h">
       <Filter>src\Janus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Scene\Components.h">
+      <Filter>src\Janus\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Scene\Entity.h">
+      <Filter>src\Janus\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Scene\Scene.h">
+      <Filter>src\Janus\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Scene\SceneCamera.h">
+      <Filter>src\Janus\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Scene\ScriptableEntity.h">
+      <Filter>src\Janus\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1437,12 +1458,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Janus\Scene\Scene.h" />
-    <ClInclude Include="src\Janus\Scene\Components.h" />
-    <ClInclude Include="src\Janus\Scene\Entity.h" />
-    <ClInclude Include="src\Janus\Renderer\Camera.h" />
-    <ClInclude Include="src\Janus\Scene\SceneCamera.h" />
-    <ClInclude Include="src\Janus\Scene\ScriptableEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Core\Application.cpp">
@@ -1496,6 +1511,15 @@
     <ClCompile Include="src\Janus\Renderer\VertexArray.cpp">
       <Filter>src\Janus\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Janus\Scene\Entity.cpp">
+      <Filter>src\Janus\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Scene\Scene.cpp">
+      <Filter>src\Janus\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Scene\SceneCamera.cpp">
+      <Filter>src\Janus\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1529,8 +1553,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Janus\Scene\Scene.cpp" />
-    <ClCompile Include="src\Janus\Scene\Entity.cpp" />
-    <ClCompile Include="src\Janus\Scene\SceneCamera.cpp" />
   </ItemGroup>
 </Project>

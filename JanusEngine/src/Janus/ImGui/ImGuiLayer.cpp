@@ -28,6 +28,7 @@ namespace Janus {
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
 		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
 		
+		io.Fonts->AddFontFromFileTTF("assets/fonts/Open_Sans/static/OpenSans-Bold.ttf", 18.0f);
 		io.FontDefault = io.Fonts->AddFontFromFileTTF("assets/fonts/Open_Sans/static/OpenSans-Regular.ttf", 18.0f);
 
 		ImGui::StyleColorsDark();

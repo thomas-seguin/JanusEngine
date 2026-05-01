@@ -4,6 +4,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Janus/Scene/SceneSerializer.h"
+
+#include "Janus/Utils/PlatformUtils.h"
+
 namespace Janus {
 	EditorLayer::EditorLayer() : Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f) {
 
@@ -82,8 +86,6 @@ namespace Janus {
 			m_CameraController.OnUpdate(ts);
 		}
 
-
-
 		// Render
 		Renderer2D::ResetStats();
 		m_Framebuffer->Bind();
@@ -140,6 +142,15 @@ namespace Janus {
 
 		if (ImGui::BeginMenuBar()) {
 			if (ImGui::BeginMenu("File")) {
+				if (ImGui::MenuItem("New", "Crtl+N")) 
+					NewScene();
+
+				if (ImGui::MenuItem("Open...", "Crtl+O"))
+					OpenScene();
+
+				if (ImGui::MenuItem("Save As...", "Crtl+Shift+S"))
+					SaveSceneAs();
+
 				if (ImGui::MenuItem("Exit")) Application::Get().Close();
 				ImGui::EndMenu();
 			}
@@ -179,5 +190,63 @@ namespace Janus {
 
 	void EditorLayer::OnEvent(Event& e) {
 		m_CameraController.OnEvent(e);
+
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<KeyPressedEvent>(JN_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
+	}
+
+	bool EditorLayer::OnKeyPressed(KeyPressedEvent& e) {
+		// Shortcuts
+		if (e.GetRepeatCount() > 0)
+			return false;
+		bool control = Input::IsKeyPressed(Key::LeftControl) || Input::IsKeyPressed(Key::RightControl);
+		bool shift = Input::IsKeyPressed(Key::LeftShift) || Input::IsKeyPressed(Key::RightShift);
+		switch (e.GetKeyCode()) {
+		case Key::S:
+		{
+			if (control && shift)
+				SaveSceneAs();
+			break;
+		}
+		case Key::N:
+		{
+			if (control)
+				NewScene();
+			break;
+		}
+		case Key::O:
+		{
+			if (control)
+				OpenScene();
+			break;
+		}
+		default:
+			break;
+		}
+	}
+	void EditorLayer::NewScene() {
+		m_ActiveScene = CreateRef<Scene>();
+		m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+	}
+
+	void EditorLayer::OpenScene() {
+		std::string filepath = FileDialogs::OpenFile("Janus Scene (*.janus)\0*.janus\0");
+		if (!filepath.empty()) {
+			m_ActiveScene = CreateRef<Scene>();
+			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+
+			SceneSerializer serializer(m_ActiveScene);
+			serializer.Deserialize(filepath);
+		}
+	}
+
+	void EditorLayer::SaveSceneAs() {
+		std::string filepath = FileDialogs::SaveFile("Janus Scene (*.janus)\0*.janus\0");
+		if (!filepath.empty()) {
+			SceneSerializer serializer(m_ActiveScene);
+			serializer.Serialize(filepath);
+		}
 	}
 }

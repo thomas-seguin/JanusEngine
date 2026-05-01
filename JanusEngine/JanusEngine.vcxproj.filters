@@ -1458,6 +1458,8 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Janus\Scene\SceneSerializer.h" />
+    <ClInclude Include="src\Janus\Utils\PlatformUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Core\Application.cpp">
@@ -1553,5 +1555,7 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Janus\Scene\SceneSerializer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsPlatformUtils.cpp" />
   </ItemGroup>
 </Project>

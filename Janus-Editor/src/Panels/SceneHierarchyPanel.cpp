@@ -13,6 +13,7 @@ namespace Janus {
 	}
 	void SceneHierarchyPanel::SetContext(const Ref<Scene>& context) {
 		m_Context = context;
+		m_SelectionContext = {};
 	}
 
 	void SceneHierarchyPanel::OnImGuiRender() {
@@ -116,7 +117,7 @@ namespace Janus {
 		ImGui::PopStyleColor(3);
 
 		ImGui::SameLine();
-		ImGui::DragFloat("##Y", &values.x, 0.1f, 0.0f, 0.0f, "%.2f");
+		ImGui::DragFloat("##Y", &values.y, 0.1f, 0.0f, 0.0f, "%.2f");
 		ImGui::PopItemWidth();
 		ImGui::SameLine();
 
@@ -130,7 +131,7 @@ namespace Janus {
 		ImGui::PopStyleColor(3);
 
 		ImGui::SameLine();
-		ImGui::DragFloat("##Z", &values.x, 0.1f, 0.0f, 0.0f, "%.2f");
+		ImGui::DragFloat("##Z", &values.z, 0.1f, 0.0f, 0.0f, "%.2f");
 		ImGui::PopItemWidth();
 
 		ImGui::PopStyleVar();

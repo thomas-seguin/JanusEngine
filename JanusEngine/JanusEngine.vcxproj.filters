@@ -25,6 +25,9 @@
     <Filter Include="src\Janus\Scene">
       <UniqueIdentifier>{DAEEC127-467A-2FEC-4F8B-B2E0BB958BEC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Janus\Utils">
+      <UniqueIdentifier>{1D83EF27-890E-5DEC-921F-E0E0FE29B9EC}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -36,6 +39,9 @@
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\ImGuizmo">
+      <UniqueIdentifier>{73BF7F4C-DF4A-ED10-E85B-700554664911}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor\glm">
       <UniqueIdentifier>{829FC5A8-6E57-07F6-D75E-E051C335A2E6}</UniqueIdentifier>
@@ -168,8 +174,14 @@
     <ClInclude Include="src\Janus\Scene\SceneCamera.h">
       <Filter>src\Janus\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="src\Janus\Scene\SceneSerializer.h">
+      <Filter>src\Janus\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="src\Janus\Scene\ScriptableEntity.h">
       <Filter>src\Janus\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Utils\PlatformUtils.h">
+      <Filter>src\Janus\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -197,6 +209,9 @@
     </ClInclude>
     <ClInclude Include="src\jnpch.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h">
+      <Filter>vendor\ImGuizmo</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glm\glm\common.hpp">
       <Filter>vendor\glm\glm</Filter>
@@ -1458,8 +1473,8 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Janus\Scene\SceneSerializer.h" />
-    <ClInclude Include="src\Janus\Utils\PlatformUtils.h" />
+    <ClInclude Include="src\Janus\Math\Math.h" />
+    <ClInclude Include="src\Janus\Renderer\EditorCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Core\Application.cpp">
@@ -1522,6 +1537,9 @@
     <ClCompile Include="src\Janus\Scene\SceneCamera.cpp">
       <Filter>src\Janus\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="src\Janus\Scene\SceneSerializer.cpp">
+      <Filter>src\Janus\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1546,16 +1564,22 @@
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsPlatformUtils.cpp">
+      <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\jnpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp">
+      <Filter>vendor\ImGuizmo</Filter>
+    </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Janus\Scene\SceneSerializer.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsPlatformUtils.cpp" />
+    <ClCompile Include="src\Janus\Math\Math.cpp" />
+    <ClCompile Include="src\Janus\Renderer\EditorCamera.cpp" />
   </ItemGroup>
 </Project>

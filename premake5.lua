@@ -20,6 +20,8 @@ IncludeDir["glm"] = "JanusEngine/vendor/glm"
 IncludeDir["stb_image"] = "JanusEngine/vendor/stb_image"
 IncludeDir["entt"] = "JanusEngine/vendor/entt/include"
 IncludeDir["yaml_cpp"] = "JanusEngine/vendor/yaml-cpp/include"
+IncludeDir["ImGuizmo"] = "JanusEngine/vendor/ImGuizmo"
+
 
 group "Dependencies"
 	include "JanusEngine/vendor/GLFW"
@@ -49,6 +51,8 @@ project "JanusEngine"
 		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
+		"%{prj.name}/vendor/ImGuizmo/ImGuizmo.h",
+		"%{prj.name}/vendor/ImGuizmo/ImGuizmo.cpp",
 	}
 
 	includedirs
@@ -61,8 +65,8 @@ project "JanusEngine"
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.stb_image}",
 		"%{IncludeDir.entt}",
-		"%{IncludeDir.yaml_cpp}"
-
+		"%{IncludeDir.yaml_cpp}",
+		"%{IncludeDir.ImGuizmo}",
 	}
 
 	links {
@@ -73,6 +77,9 @@ project "JanusEngine"
 		"opengl32.lib"
 	}
 
+filter "files:JanusEngine/vendor/ImGuizmo/**.cpp"
+    enablepch "off"
+
 	filter "system:windows"
 		systemversion "latest"
 		buildoptions {"/utf-8"}
@@ -81,7 +88,8 @@ project "JanusEngine"
 		{
 			"JN_PLATFORM_WINDOWS",
 			"JN_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
+			"GLFW_INCLUDE_NONE",
+			"IMGUI_DEFINE_MATH_OPERATORS" 
 		}
 
 	filter "configurations:Debug"
@@ -175,7 +183,8 @@ project "Janus-Editor"
 		"JanusEngine/src",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}"
 	}
 
 	links 

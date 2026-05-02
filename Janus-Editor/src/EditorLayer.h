@@ -3,6 +3,8 @@
 #include "Janus.h"
 #include "Panels/SceneHierarchyPanel.h"
 
+#include "Janus/Renderer/EditorCamera.h"
+
 namespace Janus {
 	class EditorLayer : public Layer {
 	public:
@@ -35,6 +37,8 @@ namespace Janus {
 
 		bool m_Primarycamera = true;
 
+		EditorCamera m_EditorCamera;
+
 		Ref<Texture2D> m_CheckerboardTexture;
 
 		bool m_ViewportFocused = false;
@@ -43,6 +47,8 @@ namespace Janus {
 		glm::vec2 m_ViewportSize = {0.0f,0.0f};
 
 		glm::vec4 m_SquareColor = { 0.2f,0.3f,0.8f, 1.0f };
+
+		int m_GizmoType = -1;
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;

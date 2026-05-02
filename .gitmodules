@@ -13,3 +13,6 @@
 [submodule "JanusEngine/vendor/yaml-cpp"]
 	path = JanusEngine/vendor/yaml-cpp
 	url = https://github.com/thomas-seguin/yaml-cpp.git
+[submodule "JanusEngine/vendor/ImGuizmo"]
+	path = JanusEngine/vendor/ImGuizmo
+	url = https://github.com/thomas-seguin/ImGuizmo.git

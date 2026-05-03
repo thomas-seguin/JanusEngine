@@ -163,6 +163,7 @@
     <ClInclude Include="src\Janus\Core\Log.h" />
     <ClInclude Include="src\Janus\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Janus\Core\MouseCodes.h" />
+    <ClInclude Include="src\Janus\Core\Timer.h" />
     <ClInclude Include="src\Janus\Core\Timestep.h" />
     <ClInclude Include="src\Janus\Core\Window.h" />
     <ClInclude Include="src\Janus\Debug\Instrumentor.h" />
@@ -185,6 +186,7 @@
     <ClInclude Include="src\Janus\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Janus\Renderer\Shader.h" />
     <ClInclude Include="src\Janus\Renderer\Texture.h" />
+    <ClInclude Include="src\Janus\Renderer\UniformBuffer.h" />
     <ClInclude Include="src\Janus\Renderer\VertexArray.h" />
     <ClInclude Include="src\Janus\Scene\Components.h" />
     <ClInclude Include="src\Janus\Scene\Entity.h" />
@@ -199,6 +201,7 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLUniformBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\jnpch.h" />
@@ -643,6 +646,7 @@
     <ClCompile Include="src\Janus\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Janus\Renderer\Shader.cpp" />
     <ClCompile Include="src\Janus\Renderer\Texture.cpp" />
+    <ClCompile Include="src\Janus\Renderer\UniformBuffer.cpp" />
     <ClCompile Include="src\Janus\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Janus\Scene\Entity.cpp" />
     <ClCompile Include="src\Janus\Scene\Scene.cpp" />
@@ -654,6 +658,7 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLUniformBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsPlatformUtils.cpp" />

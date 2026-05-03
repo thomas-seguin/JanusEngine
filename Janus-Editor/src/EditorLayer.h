@@ -19,6 +19,7 @@ namespace Janus {
 		void OnEvent(Event& e) override;
 	private:
 		bool OnKeyPressed(KeyPressedEvent& e);
+		bool OnMouseButtonPressed(MouseButtonPressedEvent& e);
 
 		void NewScene();
 		void OpenScene();
@@ -35,6 +36,8 @@ namespace Janus {
 		Entity m_CameraEntity;
 		Entity m_SecondCamera;
 
+		Entity m_HoveredEntity;
+
 		bool m_Primarycamera = true;
 
 		EditorCamera m_EditorCamera;
@@ -45,6 +48,7 @@ namespace Janus {
 		bool m_ViewportHovered = false;
 
 		glm::vec2 m_ViewportSize = {0.0f,0.0f};
+		glm::vec2 m_ViewportBounds[2];
 
 		glm::vec4 m_SquareColor = { 0.2f,0.3f,0.8f, 1.0f };
 

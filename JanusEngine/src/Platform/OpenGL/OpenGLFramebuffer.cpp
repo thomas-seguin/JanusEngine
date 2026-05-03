@@ -19,13 +19,13 @@ namespace Janus {
 			glBindTexture(TextureTarget(multisampled), id);
 		}
 
-		static void AttachColorTexture(uint32_t id, int samples, GLenum format, uint32_t width, uint32_t height, int index) {
+		static void AttachColorTexture(uint32_t id, int samples, GLenum internalFormat, GLenum format, uint32_t width, uint32_t height, int index) {
 			bool multisampled = samples > 1;
 			if (multisampled) {
-				glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, samples, format, width, height, GL_FALSE);
+				glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, samples, internalFormat, width, height, GL_FALSE);
 			}
 			else {
-				glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+				glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_UNSIGNED_BYTE, nullptr);
 
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -62,6 +62,17 @@ namespace Janus {
 			}
 
 			return false;
+		}
+
+		static GLenum JanusTextureFormatToGL(FramebufferTextureFormat format) {
+			switch (format)
+			{
+				case Janus::FramebufferTextureFormat::RGBA8:       return GL_RGBA8;
+				case Janus::FramebufferTextureFormat::RED_INTEGER: return GL_RED_INTEGER;
+			}
+
+			JN_CORE_ASSERT(false);
+			return 0;
 		}
 	}
 
@@ -106,7 +117,10 @@ namespace Janus {
 				switch (m_ColorAttachmentSpecs[i].TextureFormat)
 				{
 				case FramebufferTextureFormat::RGBA8:
-					Utils::AttachColorTexture(m_ColorAttachments[i], m_Specifcation.Samples, GL_RGBA8, m_Specifcation.Width, m_Specifcation.Height, i);
+					Utils::AttachColorTexture(m_ColorAttachments[i], m_Specifcation.Samples, GL_RGBA8, GL_RGBA, m_Specifcation.Width, m_Specifcation.Height, i);
+					break;
+				case FramebufferTextureFormat::RED_INTEGER:
+					Utils::AttachColorTexture(m_ColorAttachments[i], m_Specifcation.Samples, GL_R32I, GL_RED_INTEGER, m_Specifcation.Width, m_Specifcation.Height, i);
 					break;
 				}
 			}
@@ -139,7 +153,8 @@ namespace Janus {
 
 	void OpenGLFramebuffer::Bind() {
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RendererID);
-		glViewport(0, 0, m_Specifcation.Width, m_Specifcation.Height);
+		glViewport(0, 0, m_Specifcation.Width, m_Specifcation.Height); 
+
 	}
 
 	void OpenGLFramebuffer::Unbind() {
@@ -156,5 +171,21 @@ namespace Janus {
 		m_Specifcation.Height = height;
 
 		Invalidate();
+	}
+	int OpenGLFramebuffer::ReadPixel(uint32_t attachmentIndex, int x, int y) {
+		JN_CORE_ASSERT(attachmentIndex < m_ColorAttachments.size());
+
+		glReadBuffer(GL_COLOR_ATTACHMENT0 + attachmentIndex);
+		int pixelData;
+		glReadPixels(x,y,1,1,GL_RED_INTEGER,GL_INT, &pixelData);
+		return pixelData;
+	}
+
+	void OpenGLFramebuffer::ClearAttachment(uint32_t attachmentIndex, int value) {
+		JN_CORE_ASSERT(attachmentIndex < m_ColorAttachments.size());
+
+		auto& spec = m_ColorAttachmentSpecs[attachmentIndex];
+		glClearTexImage(m_ColorAttachments[attachmentIndex], 0, Utils::JanusTextureFormatToGL(spec.TextureFormat), GL_INT, &value);
+
 	}
 }

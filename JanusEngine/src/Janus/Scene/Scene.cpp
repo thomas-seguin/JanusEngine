@@ -35,7 +35,7 @@ namespace Janus {
 
 		auto view = m_Registry.view<TransformComponent, SpriteRendererComponent>();
 		view.each([](auto entity, auto transform, auto sprite) {
-			Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+			Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color, (int)entity);
 		});
 
 		Renderer2D::EndScene();
@@ -75,7 +75,8 @@ namespace Janus {
 
 			auto view = m_Registry.view<TransformComponent, SpriteRendererComponent>();
 			view.each([](auto entity, auto transform, auto sprite) {
-				Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+				Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity);
+
 			});
 
 			Renderer2D::EndScene();

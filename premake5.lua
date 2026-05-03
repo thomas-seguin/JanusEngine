@@ -12,15 +12,35 @@ defines { "YAML_CPP_STATIC_DEFINE" }
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+VULKAN_SDK = os.getenv("VULKAN_SDK")
+
 IncludeDir = {}
-IncludeDir["GLFW"] = "JanusEngine/vendor/GLFW/include"
-IncludeDir["Glad"] = "JanusEngine/vendor/Glad/include"
-IncludeDir["ImGui"] = "JanusEngine/vendor/imgui"
-IncludeDir["glm"] = "JanusEngine/vendor/glm"
-IncludeDir["stb_image"] = "JanusEngine/vendor/stb_image"
-IncludeDir["entt"] = "JanusEngine/vendor/entt/include"
-IncludeDir["yaml_cpp"] = "JanusEngine/vendor/yaml-cpp/include"
-IncludeDir["ImGuizmo"] = "JanusEngine/vendor/ImGuizmo"
+IncludeDir["GLFW"]        = "JanusEngine/vendor/GLFW/include"
+IncludeDir["Glad"]        = "JanusEngine/vendor/Glad/include"
+IncludeDir["ImGui"]       = "JanusEngine/vendor/imgui"
+IncludeDir["glm"]         = "JanusEngine/vendor/glm"
+IncludeDir["stb_image"]   = "JanusEngine/vendor/stb_image"
+IncludeDir["entt"]        = "JanusEngine/vendor/entt/include"
+IncludeDir["yaml_cpp"]    = "JanusEngine/vendor/yaml-cpp/include"
+IncludeDir["ImGuizmo"]    = "JanusEngine/vendor/ImGuizmo"
+IncludeDir["shaderc"]     = "%{VULKAN_SDK}/Include/shaderc"
+IncludeDir["SPIRV_Cross"] = "%{VULKAN_SDK}/Include/spirv_cross"
+IncludeDir["VulkanSDK"]   = "%{VULKAN_SDK}/Include"
+
+LibraryDir = {}
+LibraryDir["VulkanSDK"] = "%{VULKAN_SDK}/Lib"
+
+Library = {}
+
+Library["Vulkan"]               = "%{LibraryDir.VulkanSDK}/vulkan-1.lib"
+
+Library["ShaderC_Debug"]        = "%{LibraryDir.VulkanSDK}/shaderc_sharedd.lib"
+Library["ShaderC_Release"]      = "%{LibraryDir.VulkanSDK}/shaderc_shared.lib"
+
+Library["SPIRV_Cross_Debug"]         = "%{LibraryDir.VulkanSDK}/spirv-cross-cored.lib"
+Library["SPIRV_Cross_Release"]       = "%{LibraryDir.VulkanSDK}/spirv-cross-core.lib"
+Library["SPIRV_Cross_GLSL_Debug"]    = "%{LibraryDir.VulkanSDK}/spirv-cross-glsld.lib"
+Library["SPIRV_Cross_GLSL_Release"]  = "%{LibraryDir.VulkanSDK}/spirv-cross-glsl.lib"
 
 
 group "Dependencies"
@@ -67,6 +87,9 @@ project "JanusEngine"
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.yaml_cpp}",
 		"%{IncludeDir.ImGuizmo}",
+		"%{IncludeDir.VulkanSDK}",
+		"%{IncludeDir.shaderc}",
+		"%{IncludeDir.SPIRV_Cross}",
 	}
 
 	links {
@@ -74,7 +97,8 @@ project "JanusEngine"
 		"Glad",
 		"ImGui",
 		"yaml-cpp",
-		"opengl32.lib"
+		"opengl32.lib",
+		"%{Library.Vulkan}"
 	}
 
 filter "files:JanusEngine/vendor/ImGuizmo/**.cpp"
@@ -96,16 +120,34 @@ filter "files:JanusEngine/vendor/ImGuizmo/**.cpp"
 		defines "JN_DEBUG"
 		buildoptions "/MDd"
 		symbols "on"
+		links
+        {
+            "%{Library.ShaderC_Debug}",
+            "%{Library.SPIRV_Cross_Debug}",
+            "%{Library.SPIRV_Cross_GLSL_Debug}",
+        }
 
-	filter "configurations:Release"
-		defines "JN_RELEASE"
-		buildoptions "/MD"
-		optimize "on"
+    filter "configurations:Release"
+        defines "JN_RELEASE"
+        buildoptions "/MD"
+        optimize "on"
+        links
+        {
+            "%{Library.ShaderC_Release}",
+            "%{Library.SPIRV_Cross_Release}",
+            "%{Library.SPIRV_Cross_GLSL_Release}",
+        }
 
-	filter "configurations:Dist"
-		defines "JN_DIST"
-		buildoptions "/MD"
-		optimize "on"
+    filter "configurations:Dist"
+        defines "JN_DIST"
+        buildoptions "/MD"
+        optimize "on"
+        links
+        {
+            "%{Library.ShaderC_Release}",
+            "%{Library.SPIRV_Cross_Release}",
+            "%{Library.SPIRV_Cross_GLSL_Release}",
+        }
 
 project "Sandbox"
 	location "Sandbox"

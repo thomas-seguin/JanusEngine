@@ -19,6 +19,9 @@
     <Filter Include="src\Janus\ImGui">
       <UniqueIdentifier>{E7F61127-5382-7FEB-5C93-02E0C89DDBEB}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Janus\Math">
+      <UniqueIdentifier>{F622507D-E2F0-4383-CB84-B4A9B7F11FE8}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Janus\Renderer">
       <UniqueIdentifier>{43C818E1-2FAC-D936-980C-D489840FC4B8}</UniqueIdentifier>
     </Filter>
@@ -123,10 +126,16 @@
     <ClInclude Include="src\Janus\ImGui\ImGuiLayer.h">
       <Filter>src\Janus\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\Janus\Math\Math.h">
+      <Filter>src\Janus\Math</Filter>
+    </ClInclude>
     <ClInclude Include="src\Janus\Renderer\Buffer.h">
       <Filter>src\Janus\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Janus\Renderer\Camera.h">
+      <Filter>src\Janus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Janus\Renderer\EditorCamera.h">
       <Filter>src\Janus\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Janus\Renderer\Framebuffer.h">
@@ -1473,8 +1482,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Janus\Math\Math.h" />
-    <ClInclude Include="src\Janus\Renderer\EditorCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Core\Application.cpp">
@@ -1495,7 +1502,13 @@
     <ClCompile Include="src\Janus\ImGui\ImGuiLayer.cpp">
       <Filter>src\Janus\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="src\Janus\Math\Math.cpp">
+      <Filter>src\Janus\Math</Filter>
+    </ClCompile>
     <ClCompile Include="src\Janus\Renderer\Buffer.cpp">
+      <Filter>src\Janus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Janus\Renderer\EditorCamera.cpp">
       <Filter>src\Janus\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Janus\Renderer\Framebuffer.cpp">
@@ -1579,7 +1592,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Janus\Math\Math.cpp" />
-    <ClCompile Include="src\Janus\Renderer\EditorCamera.cpp" />
   </ItemGroup>
 </Project>

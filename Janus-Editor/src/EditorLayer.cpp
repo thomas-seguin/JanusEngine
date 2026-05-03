@@ -328,7 +328,7 @@ namespace Janus {
 	}
 	bool EditorLayer::OnMouseButtonPressed(MouseButtonPressedEvent& e) { 
 		if (e.GetMouseButton() == Mouse::ButtonLeft) {
-			if (m_ViewportHovered)
+			if (m_ViewportHovered && !ImGuizmo::IsOver() && !Input::IsKeyPressed(Key::LeftAlt))
 				m_SceneHierarchyPanel.SetSelectedEntity(m_HoveredEntity);
 		}
 		return false;

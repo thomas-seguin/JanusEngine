@@ -2,6 +2,8 @@
 
 #include <filesystem>
 
+#include "Janus/Renderer/Texture.h"
+
 namespace Janus {
 	class ContentBrowserPanel {
 	public:
@@ -9,5 +11,8 @@ namespace Janus {
 		void OnImGuiRender();
 	private:
 		std::filesystem::path m_CurrentDirectory;
+
+		Ref<Texture2D> m_DirectoryIcon;
+		Ref<Texture2D> m_FileIcon;
 	};
 }

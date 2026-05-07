@@ -20,6 +20,8 @@
 #include "Janus/Scene/ScriptableEntity.h"
 #include "Janus/Scene/Components.h"
 
+#include "Janus/Project/Project.h"
+
 // --------- RENDERER ---------------
 
 #include "Janus/Renderer/Renderer.h"

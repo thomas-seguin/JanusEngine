@@ -1485,6 +1485,10 @@
     <ClInclude Include="src\Janus\Core\Timer.h" />
     <ClInclude Include="src\Janus\Renderer\UniformBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLUniformBuffer.h" />
+    <ClInclude Include="src\Janus\Project\Project.h" />
+    <ClInclude Include="src\Janus\Project\ProjectSerializer.h" />
+    <ClInclude Include="src\Janus\Editor\EditorPrefs.h" />
+    <ClInclude Include="src\Janus\Core\UUID.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Janus\Core\Application.cpp">
@@ -1597,5 +1601,9 @@
     </ClCompile>
     <ClCompile Include="src\Janus\Renderer\UniformBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLUniformBuffer.cpp" />
+    <ClCompile Include="src\Janus\Project\Project.cpp" />
+    <ClCompile Include="src\Janus\Project\ProjectSerializer.cpp" />
+    <ClCompile Include="src\Janus\Editor\EditorPrefs.cpp" />
+    <ClCompile Include="src\Janus\Core\UUID.cpp" />
   </ItemGroup>
 </Project>

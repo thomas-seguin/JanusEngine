@@ -115,7 +115,7 @@ namespace Janus {
 	static void SerializeEntity(YAML::Emitter& out, Entity entity) {
 
 		out << YAML::BeginMap; // Entity
-		out << YAML::Key << "Entity" << YAML::Value << "123456789456123";
+		out << YAML::Key << "Entity" << YAML::Value << (uint64_t)entity.GetComponent<IDComponent>().ID;
 
 		if (entity.HasComponent<TagComponent>())
 		{
@@ -232,6 +232,7 @@ namespace Janus {
 				JN_CORE_TRACE("Deserialized entity with ID = {0}, name = {1}", uuid, name);
 
 				Entity deserializedEntity = m_Scene->CreateEntity(name);
+				deserializedEntity.GetComponent<IDComponent>().ID = UUID(uuid);
 
 				auto transformComponent = entity["TransformComponent"];
 				if (transformComponent)

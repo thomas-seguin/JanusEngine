@@ -4,12 +4,17 @@
 
 #include "Janus/Renderer/Texture.h"
 
+#include "Janus/Project/Project.h"
+
 namespace Janus {
 	class ContentBrowserPanel {
 	public:
 		ContentBrowserPanel();
 		void OnImGuiRender();
+
+		void SetProject(Ref<Project> project);
 	private:
+		std::filesystem::path m_BaseDirectory;
 		std::filesystem::path m_CurrentDirectory;
 
 		Ref<Texture2D> m_DirectoryIcon;

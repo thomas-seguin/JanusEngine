@@ -20,6 +20,7 @@ namespace Janus {
 
 	Entity Scene::CreateEntity(const std::string& name) {
 		Entity entity = { m_Registry.create(), this };
+		entity.AddComponent<IDComponent>();
 		entity.AddComponent<TransformComponent>();
 		auto& tag = entity.AddComponent<TagComponent>();
 		tag.Tag = name.empty() ? "Entity" : name;
@@ -134,4 +135,7 @@ namespace Janus {
 	void Scene::OnComponentAdded<NativeScriptComponent>(Entity entity, NativeScriptComponent& component) {
 
 	}
+
+	template<>
+	void Scene::OnComponentAdded<IDComponent>(Entity entity, IDComponent& component) {}
 }

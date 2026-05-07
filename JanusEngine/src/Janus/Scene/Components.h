@@ -8,8 +8,16 @@
 
 #include "SceneCamera.h"
 #include "ScriptableEntity.h"
+#include "Janus/Core/UUID.h"
 
 namespace Janus {
+
+	struct IDComponent {
+		UUID ID;
+		IDComponent() = default;
+		IDComponent(const IDComponent&) = default;
+		IDComponent(UUID id) : ID(id) {}
+	};
 
 	struct TagComponent {
 		std::string Tag;

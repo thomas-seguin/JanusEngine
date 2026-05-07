@@ -22,6 +22,10 @@ namespace Janus {
 		bool OnKeyPressed(KeyPressedEvent& e);
 		bool OnMouseButtonPressed(MouseButtonPressedEvent& e);
 
+		void NewProject();
+		void OpenProject();
+		void SaveProject();
+
 		void NewScene();
 		void OpenScene();
 		void SaveSceneAs();

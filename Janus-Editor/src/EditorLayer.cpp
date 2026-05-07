@@ -5,6 +5,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Janus/Scene/SceneSerializer.h"
+#include "Janus/Editor/EditorPrefs.h"
 
 #include "Janus/Utils/PlatformUtils.h"
 
@@ -18,6 +19,7 @@ namespace Janus {
 	}
 
 	void EditorLayer::OnAttach() {
+		EditorPrefs::Load();
 
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 
@@ -27,52 +29,28 @@ namespace Janus {
 		fbSpec.Height = 720;
 		m_Framebuffer = Framebuffer::Create(fbSpec);
 
-		m_ActiveScene = CreateRef<Scene>();
-
 		m_EditorCamera = EditorCamera(30.0f, 1.778f, 0.1f, 1000.0f);
 
-		auto square = m_ActiveScene->CreateEntity("Green Square");
-		square.AddComponent<SpriteRendererComponent>(glm::vec4{0.0f, 1.0f, 0.0f, 1.0f});
+		m_ActiveScene = CreateRef<Scene>();
 
-		auto redSquare = m_ActiveScene->CreateEntity("Red Square");
-		redSquare.AddComponent<SpriteRendererComponent>(glm::vec4{ 1.0f, 0.0f, 0.0f, 1.0f });
+		m_ActiveScene->OnViewportResize(1280, 720);
 
-		m_SquareEntity = square;
 
-		m_CameraEntity = m_ActiveScene->CreateEntity("Camera Entity");
-		m_CameraEntity.AddComponent<CameraComponent>();
+		if (!EditorPrefs::LastProject.empty())
+		{
+			auto project = Project::Load(EditorPrefs::LastProject);
+			if (project)
+				m_ContentBrowserPanel.SetProject(project);
+		}
 
-		m_SecondCamera = m_ActiveScene->CreateEntity("Camera Entity 2");
-		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
-		cc.Primary = false;
+		if (!EditorPrefs::LastScene.empty())
+		{
+			SceneSerializer serializer(m_ActiveScene);
+			serializer.Deserialize(EditorPrefs::LastScene.string());
+		}
 
-		class CameraController : public ScriptableEntity {
-		public:
-			void OnCreate() {
-			}
-
-			void OnDestroy() {
-
-			}
-
-			void OnUpdate(Timestep ts) {
-				auto& translation = GetComponent<TransformComponent>().Translation;
-				float speed = 5.0f;
-				if (Input::IsKeyPressed(Key::A))
-					translation.x -= speed * ts;
-				if (Input::IsKeyPressed(Key::D))
-					translation.x += speed * ts;
-				if (Input::IsKeyPressed(Key::W))
-					translation.y += speed * ts;
-				if (Input::IsKeyPressed(Key::S))
-					translation.y -= speed * ts;
-			}
-		};
-		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
-		m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
-
 	}
 
 	void EditorLayer::OnDetach() {}
@@ -169,14 +147,25 @@ namespace Janus {
 
 		if (ImGui::BeginMenuBar()) {
 			if (ImGui::BeginMenu("File")) {
-				if (ImGui::MenuItem("New", "Crtl+N")) 
+				if (ImGui::MenuItem("New Scene", "Crtl+N")) 
 					NewScene();
 
-				if (ImGui::MenuItem("Open...", "Crtl+O"))
+				if (ImGui::MenuItem("Open Scene", "Crtl+O"))
 					OpenScene();
 
 				if (ImGui::MenuItem("Save As...", "Crtl+Shift+S"))
 					SaveSceneAs();
+
+				ImGui::Separator();
+
+				if (ImGui::MenuItem("New Project"))
+					NewProject();
+
+				if (ImGui::MenuItem("Open Project"))
+					OpenProject();
+
+				if (ImGui::MenuItem("Save Project"))
+					SaveProject();
 
 				if (ImGui::MenuItem("Exit")) Application::Get().Close();
 				ImGui::EndMenu();
@@ -344,6 +333,9 @@ namespace Janus {
 	void EditorLayer::OpenScene() {
 		std::string filepath = FileDialogs::OpenFile("Janus Scene (*.janus)\0*.janus\0");
 		if (!filepath.empty()) {
+			EditorPrefs::LastScene = filepath;
+			EditorPrefs::Save();
+
 			m_ActiveScene = CreateRef<Scene>();
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
@@ -359,5 +351,51 @@ namespace Janus {
 			SceneSerializer serializer(m_ActiveScene);
 			serializer.Serialize(filepath);
 		}
+	}
+
+	void EditorLayer::NewProject(){
+		std::string folder = FileDialogs::ChooseFolder();
+		if (folder.empty())
+			return;
+		auto project = Project::New(folder);
+		project->GetConfig().Name = std::filesystem::path(folder).stem().string();
+		project->GetConfig().AssetDirectory = "assets";
+
+		std::filesystem::create_directories(Project::GetAssetDirectory());
+
+		std::filesystem::path projectFile = std::filesystem::path(folder) / (project->GetConfig().Name + ".jproj");
+
+		Project::SaveActive(projectFile);
+
+		EditorPrefs::LastProject = projectFile;
+		EditorPrefs::Save();
+
+		m_ContentBrowserPanel.SetProject(Project::GetActive());
+	}
+
+
+
+	void EditorLayer::OpenProject() {
+		std::string filepath = FileDialogs::OpenFile("Janus Project (*.jproj)\0*.jproj\0");
+		if (filepath.empty())
+			return;
+
+		auto project = Project::Load(filepath);
+		if (!project)
+			return;
+
+		EditorPrefs::LastProject = filepath;
+		EditorPrefs::Save();
+
+		m_ContentBrowserPanel.SetProject(project);
+	}
+
+
+	void EditorLayer::SaveProject() {
+		std::string filepath = FileDialogs::SaveFile("Janus Project (*.jproj)\0*.jproj\0");
+		if (filepath.empty())
+			return;
+
+		Project::SaveActive(filepath);
 	}
 }

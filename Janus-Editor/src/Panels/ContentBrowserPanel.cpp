@@ -5,18 +5,23 @@
 
 
 namespace Janus {
-	static const std::filesystem::path s_AssetPath = "assets";
-
-	ContentBrowserPanel::ContentBrowserPanel()
-		: m_CurrentDirectory(s_AssetPath) {
+	ContentBrowserPanel::ContentBrowserPanel() {
 		m_DirectoryIcon = Texture2D::Create("Resources/Icons/ContentBrowser/DirectoryIcon.png");
 		m_FileIcon = Texture2D::Create("Resources/Icons/ContentBrowser/FileIcon.png");
+
+		m_BaseDirectory = "assets";
+		m_CurrentDirectory = m_BaseDirectory;
+	}
+
+	void ContentBrowserPanel::SetProject(Ref<Project> project) {
+		m_BaseDirectory = Project::GetAssetDirectory();
+		m_CurrentDirectory = m_BaseDirectory;
 	}
 
 	void ContentBrowserPanel::OnImGuiRender() {
 		ImGui::Begin("Content Browser");
 
-		if (m_CurrentDirectory != std::filesystem::path(s_AssetPath))
+		if (m_CurrentDirectory != m_BaseDirectory)
 		{
 			if (ImGui::Button("<-"))
 			{
@@ -37,7 +42,7 @@ namespace Janus {
 
 		for (auto& directoryEntry : std::filesystem::directory_iterator(m_CurrentDirectory)) {
 			const auto& path = directoryEntry.path();
-			auto relativePath = std::filesystem::relative(path, s_AssetPath);
+			auto relativePath = std::filesystem::relative(path, m_BaseDirectory);
 			std::string filenameString = relativePath.filename().string();
 
 			Ref<Texture2D> icon = directoryEntry.is_directory() ? m_DirectoryIcon : m_FileIcon;
